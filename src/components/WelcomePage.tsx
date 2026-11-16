@@ -8,6 +8,7 @@ import { GlassTransition } from './GlassTransition';
 import { Nav } from './Nav';
 import { SoundToggle } from './SoundToggle';
 import { CONFIG } from '../config';
+import { audioEngine } from '../utils/audioEngine';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
 
@@ -46,7 +47,10 @@ export const WelcomePage: React.FC = () => {
           trigger: trackRef.current,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 1.2,
+          scrub: 0.6,
+          onUpdate: (self) => {
+            audioEngine.setScrollProgress(self.progress);
+          },
         },
       });
 
@@ -230,7 +234,7 @@ export const WelcomePage: React.FC = () => {
   return (
     <div
       ref={trackRef}
-      className={`relative w-full ${isMobile ? 'h-[400vh]' : 'h-[500vh]'} bg-[#070b14]`}
+      className={`relative w-full ${isMobile ? 'h-[280vh]' : 'h-[380vh]'} bg-[#070b14]`}
     >
       {/* Sticky Full-Viewport Camera Rig */}
       <div

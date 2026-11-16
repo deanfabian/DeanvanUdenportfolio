@@ -10,11 +10,12 @@ export function useLenis() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.3,
+      duration: 0.95,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.85,
+      wheelMultiplier: 1.25,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;
