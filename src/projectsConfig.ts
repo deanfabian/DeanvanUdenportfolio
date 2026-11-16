@@ -1,3 +1,5 @@
+import { assetUrl } from './config';
+
 export interface ProjectStill {
   id: string;
   image: string;
@@ -65,32 +67,32 @@ export const PROJECTS: Record<string, Project> = {
     },
     embedUrl: 'https://www.youtube-nocookie.com/embed/C_0ldSdmJhc',
     card: {
-      stillImage: '/assets/projects/mustang/hero.jpg',
-      previewVideo: '/assets/projects/mustang/preview.mp4',
-      previewVideoWebm: '/assets/projects/mustang/preview.webm',
+      stillImage: assetUrl('/assets/projects/mustang/hero.jpg'),
+      previewVideo: assetUrl('/assets/projects/mustang/preview.mp4'),
+      previewVideoWebm: assetUrl('/assets/projects/mustang/preview.webm'),
     },
     stills: [
       {
         id: 'erik',
-        image: '/assets/projects/mustang/still-1.jpg',
+        image: assetUrl('/assets/projects/mustang/still-1.jpg'),
         characterDetail: 'Erik Dekker, 50. Always carries a laminated training schedule.',
         alt: 'Erik Dekker with his laminated training schedule',
       },
       {
         id: 'cal',
-        image: '/assets/projects/mustang/still-2.jpg',
+        image: assetUrl('/assets/projects/mustang/still-2.jpg'),
         characterDetail: 'Cal Dekker. Never trains without his inhaler.',
         alt: 'Cal Dekker preparing before a match',
       },
       {
         id: 'gallus',
-        image: '/assets/projects/mustang/still-3.jpg',
+        image: assetUrl('/assets/projects/mustang/still-3.jpg'),
         characterDetail: 'Gallus Maximus. Listens to classical music in his stable.',
         alt: 'Gallus Maximus stick horse in stable',
       },
       {
         id: 'julia',
-        image: '/assets/projects/mustang/still-4.jpg',
+        image: assetUrl('/assets/projects/mustang/still-4.jpg'),
         characterDetail: 'Julia Al-Mamoet, 13. The next generation.',
         alt: 'Julia Al-Mamoet on the junior obstacle course',
       },
@@ -119,26 +121,26 @@ export const PROJECTS: Record<string, Project> = {
     },
     embedUrl: 'https://www.youtube-nocookie.com/embed/YxEyU0bfrpA',
     card: {
-      stillImage: '/assets/projects/cracked/hero.jpg',
-      previewVideo: '/assets/projects/cracked/preview.mp4',
-      previewVideoWebm: '/assets/projects/cracked/preview.webm',
+      stillImage: assetUrl('/assets/projects/cracked/hero.jpg'),
+      previewVideo: assetUrl('/assets/projects/cracked/preview.mp4'),
+      previewVideoWebm: assetUrl('/assets/projects/cracked/preview.webm'),
     },
     stills: [
       {
         id: 'victor',
-        image: '/assets/projects/cracked/still-1.jpg',
+        image: assetUrl('/assets/projects/cracked/still-1.jpg'),
         characterDetail: 'Victor, mid-twenties. Raised in a family of high achievers.',
         alt: 'Victor in the kitchen',
       },
       {
         id: 'elena',
-        image: '/assets/projects/cracked/still-2.jpg',
+        image: assetUrl('/assets/projects/cracked/still-2.jpg'),
         characterDetail: 'Elena, photographer. Raised to see failure as growth.',
         alt: 'Elena with camera',
       },
       {
         id: 'presenter',
-        image: '/assets/projects/cracked/still-3.jpg',
+        image: assetUrl('/assets/projects/cracked/still-3.jpg'),
         characterDetail: 'The Presenter. Used to be a chef himself.',
         alt: 'The televised cooking show presenter',
       },

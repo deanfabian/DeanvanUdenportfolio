@@ -1,3 +1,12 @@
+// Portfolio Sequence & Animation Configuration
+const BASE_URL = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/';
+
+export const assetUrl = (path: string): string => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  return `${BASE_URL}${path.replace(/^\//, '')}`;
+};
+
 export const CONFIG = {
   colors: {
     midnight: '#070b14',
@@ -37,6 +46,7 @@ export const CONFIG = {
     // Stage 2: The Approach & Facade Zoom (0.20 - 0.52)
     zoomStart: 0.20,
     zoomMidTextIn: 0.30,
+    zoomMidTextHold: 0.38,
     zoomMidTextOut: 0.42,
     facadeToWindowCrossfade: 0.46,
 
@@ -52,9 +62,9 @@ export const CONFIG = {
     comeInPrompt: 0.92,
   },
   assets: {
-    facade: '/assets/scenes/facade.jpg',
-    windowCloseup: '/assets/scenes/window-closeup.jpg',
-    roomInterior: '/assets/scenes/room-interior.jpg',
+    facade: assetUrl('/assets/scenes/facade.jpg'),
+    windowCloseup: assetUrl('/assets/scenes/window-closeup.jpg'),
+    roomInterior: assetUrl('/assets/scenes/room-interior.jpg'),
   },
 } as const;
 
