@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-midnight: #070b14;
+  --color-night-sky: #0b1120;
+  --color-building-charcoal: #0d1322;
+  --color-building-shadow: #080c16;
+  --color-tungsten: #f59e0b;
+  --color-sodium: #d97706;
+  --color-tv-cool: #7dd3fc;
+  --color-room-warm: #fef3c7;
+  --color-off-white: #f8fafc;
+  --color-text-muted: #94a3b8;
+}
+
+/* Custom smooth scroll reset for Lenis */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Base resets */
+body {
+  margin: 0;
+  background-color: var(--color-midnight);
+  color: var(--color-off-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle film grain overlay */
+.film-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+/* Silhouette Animations */
+@keyframes pace-cycle {
+  0%, 100% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes dance-sway {
+  0%, 100% {
+    transform: rotate(-1.5deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1.5deg) translateY(-0.8px);
+  }
+}
+
+@keyframes plant-dip {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  30%, 70% {
+    transform: rotate(-7deg);
+  }
+}
+
+@keyframes cook-stir {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-1px) scaleY(1.02);
+  }
+}
+
+@keyframes homework-nudge {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes couch-breath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.01);
+    opacity: 0.85;
+  }
+}
+
+@keyframes party-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-2px);
+  }
+  75% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes tv-flicker {
+  0%, 100% {
+    opacity: 0.85;
+    filter: brightness(1);
+  }
+  15% {
+    opacity: 0.65;
+    filter: brightness(0.85);
+  }
+  32% {
+    opacity: 0.95;
+    filter: brightness(1.2);
+  }
+  48% {
+    opacity: 0.7;
+    filter: brightness(0.9);
+  }
+  65% {
+    opacity: 0.9;
+    filter: brightness(1.1);
+  }
+  85% {
+    opacity: 0.6;
+    filter: brightness(0.8);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(4px);
+  }
+}
+
+.anim-pace {
+  animation: pace-cycle var(--anim-dur, 5.5s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: bottom center;
+}
+
+.anim-dance {
+  animation: dance-sway var(--anim-dur, 4.8s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: bottom center;
+}
+
+.anim-plant {
+  animation: plant-dip var(--anim-dur, 6.2s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: bottom left;
+}
+
+.anim-cook {
+  animation: cook-stir var(--anim-dur, 3.6s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: bottom center;
+}
+
+.anim-homework {
+  animation: homework-nudge var(--anim-dur, 7s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: bottom right;
+}
+
+.anim-couch {
+  animation: couch-breath var(--anim-dur, 5s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: center;
+}
+
+.anim-party {
+  animation: party-bob var(--anim-dur, 2.8s) ease-in-out infinite var(--anim-del, 0s);
+  transform-origin: bottom center;
+}
+
+.anim-tv {
+  animation: tv-flicker var(--anim-dur, 2.2s) steps(4, jump-none) infinite var(--anim-del, 0s);
+}
+
+.anim-pulse-down {
+  animation: gentle-pulse 2.6s ease-in-out infinite;
+}
+
+/* Glass condensation droplets styling */
+.droplet-trail {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
