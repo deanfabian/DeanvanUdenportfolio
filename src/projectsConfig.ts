@@ -259,8 +259,6 @@ export const PROJECTS: Record<string, Project> = {
     },
     card: {
       stillImage: assetUrl('/assets/projects/throwers-lab/logo-dark.png'),
-      previewVideo: assetUrl('/assets/projects/throwers-lab/preview.mp4'),
-      previewVideoWebm: assetUrl('/assets/projects/throwers-lab/preview.webm'),
     },
     stills: [
       {
@@ -276,27 +274,6 @@ export const PROJECTS: Record<string, Project> = {
         characterDetail: 'The Throwers Lab — Monogram & woordmerk (licht).',
         characterDetailNl: 'The Throwers Lab — Monogram & woordmerk (licht).',
         alt: 'The Throwers Lab logo on white background',
-      },
-      {
-        id: 'mechanics',
-        image: assetUrl('/assets/projects/throwers-lab/still-1.jpg'),
-        characterDetail: 'Bewegingsanalyse en biomechanica.',
-        characterDetailNl: 'Bewegingsanalyse en biomechanica.',
-        alt: 'Throwing mechanics analysis',
-      },
-      {
-        id: 'drills',
-        image: assetUrl('/assets/projects/throwers-lab/still-2.jpg'),
-        characterDetail: 'Bullpen & pitch design sessies.',
-        characterDetailNl: 'Bullpen & pitch design sessies.',
-        alt: 'Bullpen practice session',
-      },
-      {
-        id: 'recruitment',
-        image: assetUrl('/assets/projects/throwers-lab/still-3.jpg'),
-        characterDetail: 'Werving en communicatie voor jonge atleten.',
-        characterDetailNl: 'Werving en communicatie voor jonge atleten.',
-        alt: 'Talent recruitment outreach',
       },
     ],
   },
