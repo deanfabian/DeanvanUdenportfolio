@@ -291,14 +291,13 @@ export const WelcomePage: React.FC = () => {
           </div>
         </div>
 
-        {/* Stage 4 Final Invitation: "Come in." (Crisp Editorial Prompt) */}
+        {/* Stage 4 Final Invitation: "Kom binnen." */}
         <div
           ref={comeInRef}
           className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-35 pointer-events-none opacity-0 flex flex-col items-center gap-2 text-center"
         >
           <div className="px-5 py-2 border border-white/20 bg-[#070b14]/90 backdrop-blur-sm pointer-events-auto select-text flex items-center gap-3">
-            <span className="w-1.5 h-1.5 bg-amber-400" />
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-slate-200 font-medium">
+            <p className="font-serif italic text-base md:text-lg text-amber-100 font-normal">
               {t.welcome.comeIn}
             </p>
             <span className="text-amber-400 font-mono text-xs" aria-hidden="true">↓</span>

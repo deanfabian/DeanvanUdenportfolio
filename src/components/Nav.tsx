@@ -56,8 +56,8 @@ export const Nav: React.FC<NavProps> = ({ navRef }) => {
       aria-label="Main Navigation"
       className="fixed top-0 left-0 right-0 z-50 pointer-events-auto bg-[#070b14]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300 select-text"
     >
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2">
-        {/* Editorial Masthead Brand Signature */}
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-4">
+        {/* Brand Signature */}
         <a
           href="#"
           onClick={(e) => {
@@ -65,45 +65,31 @@ export const Nav: React.FC<NavProps> = ({ navRef }) => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.history.pushState(null, '', ' ');
           }}
-          className="group flex items-center gap-2 sm:gap-3 focus:outline-none flex-shrink-0"
+          className="group flex items-center focus:outline-none flex-shrink-0"
           aria-label="Dean van Uden - Back to top"
         >
-          <span className="font-serif text-sm sm:text-lg tracking-tight font-light text-slate-100 group-hover:text-amber-200 transition-colors whitespace-nowrap">
+          <span className="font-serif text-base sm:text-lg tracking-tight font-light text-slate-100 group-hover:text-amber-200 transition-colors whitespace-nowrap">
             Dean van Uden
-          </span>
-          <span className="hidden md:inline-block text-[11px] font-mono tracking-widest text-slate-400 uppercase pl-3 border-l border-white/15">
-            {language === 'nl' ? 'AV Producent' : 'AV Producer'}
           </span>
         </a>
 
-        {/* Editorial Navigation Tabs */}
-        <nav aria-label="Navigation Tabs" className="flex items-center gap-2 sm:gap-6 flex-shrink-0">
-          <ul className="flex items-center gap-2 sm:gap-6 text-[11px] sm:text-xs font-mono tracking-wider uppercase">
-            {navItems.map((item, idx) => {
+        {/* Navigation Tabs */}
+        <nav aria-label="Navigation Tabs" className="flex items-center gap-4 sm:gap-8 flex-shrink-0">
+          <ul className="flex items-center gap-4 sm:gap-7 text-xs font-mono tracking-wider uppercase">
+            {navItems.map((item) => {
               const isActive = activeSection === item.id;
-              const indexStr = `0${idx + 1}`;
               return (
                 <li key={item.id}>
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`group flex items-center gap-1 sm:gap-1.5 py-1 transition-colors duration-200 focus:outline-none whitespace-nowrap ${
+                    className={`group py-1 transition-colors duration-200 focus:outline-none whitespace-nowrap ${
                       isActive
                         ? 'text-amber-300 font-medium'
                         : 'text-slate-400 hover:text-slate-100'
                     }`}
                   >
-                    <span
-                      className={`text-[9px] sm:text-[10px] font-mono hidden sm:inline ${
-                        isActive ? 'text-amber-400' : 'text-slate-600 group-hover:text-slate-400'
-                      }`}
-                    >
-                      {indexStr}
-                    </span>
                     <span>{item.label}</span>
-                    {isActive && (
-                      <span className="hidden sm:inline-block w-1.5 h-1.5 bg-amber-400 ml-0.5" />
-                    )}
                   </a>
                 </li>
               );
@@ -113,7 +99,7 @@ export const Nav: React.FC<NavProps> = ({ navRef }) => {
           {/* Hairline Divider */}
           <span className="w-px h-3.5 sm:h-4 bg-white/15" aria-hidden="true" />
 
-          {/* Crisp Editorial Language Toggle */}
+          {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
             type="button"

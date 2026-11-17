@@ -1,5 +1,10 @@
 export type Language = 'nl' | 'en';
 
+export interface Chapter {
+  title?: string;
+  lines: string[];
+}
+
 export interface Translations {
   nav: {
     portfolio: string;
@@ -20,13 +25,10 @@ export interface Translations {
     quietInside: string;
   };
   portfolio: {
-    badge: string;
     title: string;
-    subtitle: string;
     filterAll: string;
     filterFilms: string;
     filterSocial: string;
-    viewProject: string;
     watchYouTube: string;
     viewImdb: string;
     credits: string;
@@ -35,50 +37,50 @@ export interface Translations {
     outlineLabel: string;
   };
   story: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    lead: string;
-    p1: string;
-    p2: string;
-    p3: string;
-    stats: {
-      role: string;
-      roleVal: string;
-      base: string;
-      baseVal: string;
-      focus: string;
-      focusVal: string;
+    opening: {
+      lines: string[];
+    };
+    ch1: {
+      title: string;
+      p1: string[];
+      p2: string;
+      p3: string;
+      links: {
+        mustang: string;
+        cracked: string;
+      };
+    };
+    ch2: {
+      title: string;
+      p1: string;
+      p2: string;
+      p3: string;
+      links: {
+        twins: string;
+        throwersLab: string;
+      };
+    };
+    ch3: {
+      title: string;
+      p1: string;
+      p2: string;
+      p3: string;
+      p4: string;
+    };
+    ch4: {
+      title: string;
+      p1: string;
+      p2: string;
+      p3: string;
+      linkMail: string;
     };
   };
   contact: {
-    badge: string;
     title: string;
-    subtitle: string;
-    emailLabel: string;
+    subtext: string;
     copyEmail: string;
     copied: string;
-    locationLabel: string;
-    locationVal: string;
-    studyLabel: string;
-    studyVal: string;
-    form: {
-      name: string;
-      namePlaceholder: string;
-      email: string;
-      emailPlaceholder: string;
-      subject: string;
-      subjectPlaceholder: string;
-      typeFilm: string;
-      typeSocial: string;
-      typeOther: string;
-      message: string;
-      messagePlaceholder: string;
-      send: string;
-      sending: string;
-      successTitle: string;
-      successDesc: string;
-    };
+    openMail: string;
   };
 }
 
@@ -89,13 +91,13 @@ export const translations: Record<Language, Translations> = {
       story: 'Story',
       contact: 'Contact',
       backToPortfolio: 'Terug naar portfolio',
-      backToStory: 'Terug naar overzicht',
+      backToStory: 'Terug naar story',
     },
     welcome: {
       name: 'Dean van Uden',
-      scrollCue: 'scroll omlaag',
+      scrollCue: 'scroll',
       whisper: '“Die is van mij.”',
-      comeIn: 'Binnentreden',
+      comeIn: 'Kom binnen.',
     },
     sound: {
       soundOff: 'Geluid uit',
@@ -103,13 +105,10 @@ export const translations: Record<Language, Translations> = {
       quietInside: 'Binnen · Stilte',
     },
     portfolio: {
-      badge: '№ 01 / ARCHIEF & PRODUCTIE',
-      title: 'Geselecteerde projecten',
-      subtitle: 'Korte fictiefilms vanuit de opleiding aan BUas en visuele videocontent voor sportclubs in Brabant.',
-      filterAll: 'Alle producties',
-      filterFilms: 'Fictie & Film (BUas)',
-      filterSocial: 'Sport & Social Content',
-      viewProject: 'Bekijk productie',
+      title: 'Films en content.',
+      filterAll: 'Alle',
+      filterFilms: 'Film & Fictie',
+      filterSocial: 'Social Media & Content',
       watchYouTube: 'Bekijk op YouTube',
       viewImdb: 'Bekijk op IMDb',
       credits: 'Credits & Crew',
@@ -118,50 +117,57 @@ export const translations: Record<Language, Translations> = {
       outlineLabel: 'Synopsis',
     },
     story: {
-      badge: '№ 02 / DOSSIER & WERKWIJZE',
-      title: 'Audiovisueel producent met een voorliefde voor fictie en sportdynamiek.',
-      subtitle: 'Creative Business (AV) · Breda University of Applied Sciences',
-      lead: 'Geen holle concepten, maar strak georganiseerde producties waarin acteurs en crew de ruimte krijgen om raak te schieten.',
-      p1: 'Mijn naam is Dean van Uden (21). Aan de Breda University of Applied Sciences (BUas) specialiseer ik me binnen Creative Business in audiovisuele productie en regie. Ik werk het liefst op het snijvlak van droge humor en menselijke eigenaardigheden — van een absurdistische mockumentary over de hobby-horsing topsport (Mustang) tot een beklemmend psychologisch drama rondom een obsessieve vogelaar (CRACKED).',
-      p2: 'Als producent ben ik degene die de logistiek van een filmset stroomlijnt: van vroege scriptbesprekingen en casting tot call sheets, draaidag-planning en montage-deadlines. Een overtuigend cinematografisch idee komt pas tot leven wanneer de praktische randvoorwaarden op de set waterdicht geregeld zijn.',
-      p3: 'Buiten de studio sta ik langs het gravel voor honkbal- en softbalclub Brabant Twins in Oosterhout. Daar vertaal ik de rauwe wedstrijdspanning, snelle acties en clubcultuur naar directe, ritmische social video’s met een eigen visuele signatuur.',
-      stats: {
-        role: 'Functie',
-        roleVal: 'AV Producent & Content Maker',
-        base: 'Standplaats',
-        baseVal: 'Breda & Oosterhout, NL',
-        focus: 'Vakgebied',
-        focusVal: 'Fictieproductie & Sportmedia',
+      opening: {
+        lines: [
+          'Je liep langs honderd ramen om hier te komen.',
+          'Achter elk ervan zat iemand.',
+          'Dit is wat er achter het mijne zit.',
+        ],
+      },
+      ch1: {
+        title: 'I. Het kader',
+        p1: [
+          'Een man die gelooft dat een houten stok het beste paard ter wereld is.',
+          'Een kok die alles kan, behalve een ei breken.',
+        ],
+        p2: 'Op papier zijn het komedies. Op de set zag ik acteurs het moment vinden waarop hun personage ophield een grap te zijn en iemand werd.',
+        p3: 'Ik produceerde ze, als student Creative Business aan BUas. Locaties, cast, planning, de draaidag. Alles wat je niet ziet, zodat je alleen het verhaal ziet.',
+        links: {
+          mustang: 'Mustang →',
+          cracked: 'CRACKED →',
+        },
+      },
+      ch2: {
+        title: 'II. De feed',
+        p1: 'Een clubpagina heeft geen budget en geen tv-ploeg. Wel elke week mensen met een verhaal dat niemand anders vertelt.',
+        p2: 'Voor Brabant Twins in Oosterhout maak ik de social media. Voor The Throwers Lab, een ontwikkelingsprogramma voor jonge werpers dat ik samen met een bewegingswetenschapper run, doe ik alles achter de schermen: content, marketing, werving en financiën.',
+        p3: 'Het werk is hetzelfde als op een set. Iemand laten zien die je anders voorbij was gescrold.',
+        links: {
+          twins: 'Brabant Twins →',
+          throwersLab: 'The Throwers Lab →',
+        },
+      },
+      ch3: {
+        title: 'III. Buiten beeld',
+        p1: 'Als ik geen camera vasthoud, sta ik meestal op een veld.',
+        p2: 'Ik speel in Heren 2 van Brabant Twins. Als hoofdcoach bij Brabant United leid ik talenten onder de 16 uit Brabant op naar en tijdens het NK Little League: spelers scouten en werven, trainingen opzetten, het hele traject regelen. Bij Bixie zet ik winterscholen, trainingen en zomerkampen op voor honk- en softballers, en help ik ze organiseren en uitvoeren.',
+        p3: 'En ik bouw Beyond Bases, een merk voor Europese honkballers dat begon als kleding en draait om wat er niet in een statline staat: hoe het met de speler zelf gaat.',
+        p4: 'Het is ondernemend werk. Het leerde me plannen, mensen bij elkaar brengen en iets neerzetten dat er eerst niet was. Precies wat een productie ook vraagt.',
+      },
+      ch4: {
+        title: 'IV. Het volgende raam',
+        p1: 'Ik zoek mijn volgende kamer.',
+        p2: 'Een productie, een mediateam, een kanaal dat verhalen wil vertellen over mensen die je anders voorbij zou lopen.',
+        p3: 'Ergens met veel ramen.',
+        linkMail: 'Mail me →',
       },
     },
     contact: {
-      badge: '№ 03 / CONTACT & SAMENWERKING',
-      title: 'Nieuwe productie of samenwerking starten?',
-      subtitle: 'Heb je een filmplan, zoek je een producent voor een project of wil je sparren over gerichte videocontent? Stuur direct een bericht of mail naar mijn inbox.',
-      emailLabel: 'Rechtstreeks contact',
-      copyEmail: 'Kopieer adres',
+      title: 'Mail me.',
+      subtext: 'Over een stage, een productie of content.',
+      copyEmail: 'Kopieer',
       copied: 'Gekopieerd',
-      locationLabel: 'Werkgebied',
-      locationVal: 'Breda, Oosterhout & Noord-Brabant',
-      studyLabel: 'Opleiding',
-      studyVal: 'BUas Creative Business (AV)',
-      form: {
-        name: 'Naam',
-        namePlaceholder: 'Bijv. Alex de Vries',
-        email: 'E-mailadres',
-        emailPlaceholder: 'alex@voorbeeld.nl',
-        subject: 'Type aanvraag',
-        subjectPlaceholder: 'Selecteer een categorie',
-        typeFilm: 'Filmproductie / Fictieproject',
-        typeSocial: 'Social Video & Sportcontent',
-        typeOther: 'Kennismaking / Vrijblijvend contact',
-        message: 'Toelichting op het project',
-        messagePlaceholder: 'Beschrijf kort het idee, de gewenste periode of het soort productie...',
-        send: 'Verstuur aanvraag',
-        sending: 'Versturen...',
-        successTitle: 'Aanvraag ontvangen',
-        successDesc: 'Bedankt voor je bericht. Ik reageer binnen 1 tot 2 werkdagen.',
-      },
+      openMail: 'Open mail',
     },
   },
   en: {
@@ -170,13 +176,13 @@ export const translations: Record<Language, Translations> = {
       story: 'Story',
       contact: 'Contact',
       backToPortfolio: 'Back to portfolio',
-      backToStory: 'Back to overview',
+      backToStory: 'Back to story',
     },
     welcome: {
       name: 'Dean van Uden',
-      scrollCue: 'scroll down',
+      scrollCue: 'scroll',
       whisper: '“This one’s mine.”',
-      comeIn: 'Enter',
+      comeIn: 'Come in.',
     },
     sound: {
       soundOff: 'Sound off',
@@ -184,13 +190,10 @@ export const translations: Record<Language, Translations> = {
       quietInside: 'Inside · Quiet',
     },
     portfolio: {
-      badge: '№ 01 / SELECTED ARCHIVE',
-      title: 'Selected Productions',
-      subtitle: 'Narrative short films produced at BUas, alongside sports visual media in Brabant.',
-      filterAll: 'All Productions',
-      filterFilms: 'Fiction & Short Films (BUas)',
-      filterSocial: 'Sports & Social Content',
-      viewProject: 'View Production',
+      title: 'Films and content.',
+      filterAll: 'All',
+      filterFilms: 'Film & Fiction',
+      filterSocial: 'Social Media & Content',
       watchYouTube: 'Watch on YouTube',
       viewImdb: 'View on IMDb',
       credits: 'Credits & Crew',
@@ -199,50 +202,57 @@ export const translations: Record<Language, Translations> = {
       outlineLabel: 'Synopsis',
     },
     story: {
-      badge: '№ 02 / DOSSIER & PRACTICE',
-      title: 'Audiovisual producer focused on narrative fiction and sports dynamics.',
-      subtitle: 'Creative Business (AV) · Breda University of Applied Sciences',
-      lead: 'Grounding ambitious creative visions in disciplined, transparent production frameworks.',
-      p1: 'My name is Dean van Uden (21). Studying Creative Business with an Audiovisual specialization at BUas in Breda, I produce and direct narrative fiction and branded visual content. I am drawn to authentic human quirks and dry wit — from an absurd mockumentary about the elite hobby-horsing circuit (Mustang) to a tense psychological drama revolving around an isolated birdwatcher (CRACKED).',
-      p2: 'As a producer, my responsibility is turning script ambition into reality: managing casting calls, call sheets, budgeting, shooting schedules, and post-production deliverables. The most striking cinematic ideas only succeed when practical production conditions on set are completely airtight.',
-      p3: 'Off set, I produce field-level visual content for Brabant Twins, a premier baseball and softball club in Oosterhout. Capturing raw kinetic energy and game-day momentum, I craft fast-paced social video that brings genuine energy to audiences.',
-      stats: {
-        role: 'Role',
-        roleVal: 'AV Producer & Content Creator',
-        base: 'Location',
-        baseVal: 'Breda & Oosterhout, NL',
-        focus: 'Specialization',
-        focusVal: 'Fiction Production & Sports Media',
+      opening: {
+        lines: [
+          'You walked past a hundred windows to get here.',
+          'Behind each one sat someone.',
+          'This is what is behind mine.',
+        ],
+      },
+      ch1: {
+        title: 'I. The frame',
+        p1: [
+          'A man who believes a wooden stick is the best horse in the world.',
+          'A chef who can do anything, except break an egg.',
+        ],
+        p2: 'On paper, they are comedies. On set, I saw actors find the moment their character stopped being a joke and became someone.',
+        p3: 'I produced them, as a Creative Business student at BUas. Locations, cast, planning, the shoot day. Everything you don’t see, so you only see the story.',
+        links: {
+          mustang: 'Mustang →',
+          cracked: 'CRACKED →',
+        },
+      },
+      ch2: {
+        title: 'II. The feed',
+        p1: 'A club page has no budget and no TV crew. But every week, people with a story no one else tells.',
+        p2: 'For Brabant Twins in Oosterhout, I make the social media. For The Throwers Lab, a development program for young pitchers that I run together with a sports scientist, I do everything behind the scenes: content, marketing, recruitment and finances.',
+        p3: 'The work is the same as on a set. Showing someone you would have otherwise scrolled past.',
+        links: {
+          twins: 'Brabant Twins →',
+          throwersLab: 'The Throwers Lab →',
+        },
+      },
+      ch3: {
+        title: 'III. Off screen',
+        p1: 'When I’m not holding a camera, I’m usually on a field.',
+        p2: 'I play in Heren 2 of Brabant Twins. As head coach at Brabant United, I train U16 talents from Brabant toward and during the Dutch Little League Championship: scouting and recruiting players, setting up practices, managing the entire trajectory. At Bixie, I set up winter schools, training sessions and summer camps for baseball and softball players, and help organize and run them.',
+        p3: 'And I’m building Beyond Bases, a brand for European baseball players that started as apparel and revolves around what isn’t in a statline: how the player themselves is doing.',
+        p4: 'It is entrepreneurial work. It taught me to plan, bring people together and build something that wasn\'t there before. Exactly what a production asks for too.',
+      },
+      ch4: {
+        title: 'IV. The next window',
+        p1: 'I am looking for my next room.',
+        p2: 'A production, a media team, a channel that wants to tell stories about people you would otherwise walk past.',
+        p3: 'Somewhere with a lot of windows.',
+        linkMail: 'Mail me →',
       },
     },
     contact: {
-      badge: '№ 03 / INQUIRY & DISPATCH',
-      title: 'Initiate a project or collaboration.',
-      subtitle: 'Planning an upcoming shoot, need a producer for a narrative project, or looking for compelling sport visual media? Send an inquiry directly below.',
-      emailLabel: 'Direct contact',
-      copyEmail: 'Copy address',
+      title: 'Mail me.',
+      subtext: 'About an internship, a production, or content.',
+      copyEmail: 'Copy',
       copied: 'Copied',
-      locationLabel: 'Base region',
-      locationVal: 'Breda, Oosterhout & North Brabant',
-      studyLabel: 'Education',
-      studyVal: 'BUas Creative Business (AV)',
-      form: {
-        name: 'Name',
-        namePlaceholder: 'e.g. Alex Smith',
-        email: 'Email address',
-        emailPlaceholder: 'alex@example.com',
-        subject: 'Inquiry type',
-        subjectPlaceholder: 'Select category',
-        typeFilm: 'Film Production / Fiction Project',
-        typeSocial: 'Social Video & Sports Content',
-        typeOther: 'General Inquiry / Coffee',
-        message: 'Project details',
-        messagePlaceholder: 'Briefly describe your concept, timeline, or how we might collaborate...',
-        send: 'Send inquiry',
-        sending: 'Sending...',
-        successTitle: 'Inquiry received',
-        successDesc: 'Thank you for reaching out. I will respond within 1 to 2 business days.',
-      },
+      openMail: 'Open mail',
     },
   },
 };

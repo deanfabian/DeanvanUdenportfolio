@@ -205,19 +205,25 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/50 to-transparent" />
 
-              {/* Instagram Card Overlay */}
+              {/* Project Card Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <div className="flex flex-col items-center gap-3 px-6 py-5 border border-white/20 bg-black/85 backdrop-blur-sm transition-colors duration-300 group-hover:border-amber-400">
                   <div className="w-12 h-12 border border-white/20 flex items-center justify-center text-slate-100 group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
-                    <Instagram className="w-6 h-6" />
+                    {project.links.instagram ? (
+                      <Instagram className="w-6 h-6" />
+                    ) : (
+                      <ExternalLink className="w-6 h-6" />
+                    )}
                   </div>
                   <div className="space-y-1">
-                    <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-slate-100 group-hover:text-amber-200 transition-colors block font-semibold">
-                      {project.links.externalLabel || (isNl ? 'Bekijk @brabanttwins op Instagram' : 'View @brabanttwins on Instagram')}
+                    <span className="text-xs sm:text-sm font-mono tracking-wider text-slate-100 group-hover:text-amber-200 transition-colors block font-medium">
+                      {project.links.externalLabel || (isNl ? 'Bekijk project' : 'View project')}
                     </span>
-                    <span className="text-[11px] font-mono tracking-wider text-slate-400 block">
-                      instagram.com/brabanttwins ↗
-                    </span>
+                    {project.links.instagram && (
+                      <span className="text-[11px] font-mono tracking-wider text-slate-400 block">
+                        instagram.com/brabanttwins ↗
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -252,11 +258,11 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               </a>
             </>
           )}
-          {(project.links.instagram || project.links.external) && (
+          {project.links.instagram && (
             <>
               {project.links.youtube && <span className="text-slate-700 hidden sm:inline" aria-hidden="true">·</span>}
               <a
-                href={project.links.instagram || project.links.external}
+                href={project.links.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 px-3 py-1.5 border border-white/20 bg-[#0a0f1d] hover:border-amber-400 hover:text-amber-200 transition-colors text-slate-200"
