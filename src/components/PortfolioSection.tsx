@@ -31,7 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const isNl = language === 'nl';
   const roleText = isNl && project.cardRoleNl ? project.cardRoleNl : project.cardRole;
   const typeText = isNl && project.typeNl ? project.typeNl : project.type;
-  const isPortrait = project.aspectRatio === 'portrait';
+  const isPortrait = (project.cardAspectRatio || project.aspectRatio) === 'portrait';
 
   return (
     <a

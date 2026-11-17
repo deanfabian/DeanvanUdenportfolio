@@ -13,6 +13,8 @@ export interface Project {
   slug: string;
   category: 'film' | 'social' | 'design' | 'photography';
   aspectRatio?: 'landscape' | 'portrait';
+  cardAspectRatio?: 'landscape' | 'portrait';
+  detailAspectRatio?: 'landscape' | 'portrait';
   title: string;
   displayTitle: string;
   workingTitle?: string;
@@ -196,6 +198,8 @@ export const PROJECTS: Record<string, Project> = {
     slug: 'twins',
     category: 'social',
     aspectRatio: 'landscape',
+    cardAspectRatio: 'landscape',
+    detailAspectRatio: 'portrait',
     title: 'Brabant Twins — Social Media',
     displayTitle: 'Brabant Twins',
     year: '2024–heden',
@@ -216,13 +220,6 @@ export const PROJECTS: Record<string, Project> = {
       stillImage: assetUrl('/assets/projects/twins/hero.jpg'),
     },
     stills: [
-      {
-        id: 'twins-logo',
-        image: assetUrl('/assets/projects/twins/hero.jpg'),
-        characterDetail: 'Brabant Twins clubidentiteit en logo.',
-        characterDetailNl: 'Brabant Twins clubidentiteit en logo.',
-        alt: 'Brabant Twins logo',
-      },
       {
         id: 'windsant',
         image: assetUrl('/assets/projects/twins/player-windsant.jpg'),

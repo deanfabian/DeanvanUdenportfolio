@@ -115,7 +115,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
         <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
           <div
             className={`relative mx-auto overflow-hidden border border-white/15 bg-black/90 shadow-2xl ${
-              project.aspectRatio === 'portrait'
+              (project.detailAspectRatio || project.aspectRatio) === 'portrait'
                 ? 'max-w-xl aspect-[4/5] sm:aspect-[3/4]'
                 : 'w-full aspect-[16/10] sm:aspect-[3/2]'
             }`}
