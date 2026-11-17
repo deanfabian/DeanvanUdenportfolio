@@ -5,12 +5,14 @@ interface PhotographicSceneProps {
   facadeRef: React.RefObject<HTMLDivElement>;
   windowCloseupRef: React.RefObject<HTMLDivElement>;
   roomInteriorRef: React.RefObject<HTMLDivElement>;
+  isMobile?: boolean;
 }
 
 export const PhotographicScene: React.FC<PhotographicSceneProps> = ({
   facadeRef,
   windowCloseupRef,
   roomInteriorRef,
+  isMobile = false,
 }) => {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none bg-[#070b14]">
@@ -19,13 +21,16 @@ export const PhotographicScene: React.FC<PhotographicSceneProps> = ({
         ref={facadeRef}
         className="absolute inset-0 w-full h-full will-change-transform"
         style={{
-          transformOrigin: `${CONFIG.camera.originX}% ${CONFIG.camera.originY}%`,
+          transformOrigin: isMobile ? '60% 50%' : `${CONFIG.camera.originX}% ${CONFIG.camera.originY}%`,
         }}
       >
         <img
           src={CONFIG.assets.facade}
           alt="Night high-rise building with lit windows and traffic"
           className="w-full h-full object-cover select-none pointer-events-none"
+          style={{
+            objectPosition: isMobile ? '60% center' : 'center center',
+          }}
           loading="eager"
           decoding="async"
         />
@@ -38,13 +43,16 @@ export const PhotographicScene: React.FC<PhotographicSceneProps> = ({
         ref={windowCloseupRef}
         className="absolute inset-0 w-full h-full will-change-transform opacity-0"
         style={{
-          transformOrigin: '47.0% 56.2%',
+          transformOrigin: isMobile ? '48% 50%' : '47.0% 56.2%',
         }}
       >
         <img
           src={CONFIG.assets.windowCloseup}
           alt="Close-up of Dean's lit window from outside with raindrops on glass"
           className="w-full h-full object-cover select-none pointer-events-none"
+          style={{
+            objectPosition: isMobile ? '46% center' : 'center center',
+          }}
           loading="eager"
           decoding="async"
         />
@@ -57,13 +65,16 @@ export const PhotographicScene: React.FC<PhotographicSceneProps> = ({
         ref={roomInteriorRef}
         className="absolute inset-0 w-full h-full will-change-transform opacity-0"
         style={{
-          transformOrigin: '40% 55%',
+          transformOrigin: isMobile ? '30% 50%' : '40% 55%',
         }}
       >
         <img
           src={CONFIG.assets.roomInterior}
           alt="Inside Dean's room with pitching whiteboard, baseball glove, and desk lamp"
           className="w-full h-full object-cover select-none pointer-events-none"
+          style={{
+            objectPosition: isMobile ? '28% center' : 'center center',
+          }}
           loading="eager"
           decoding="async"
         />

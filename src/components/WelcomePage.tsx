@@ -90,10 +90,12 @@ export const WelcomePage: React.FC = () => {
       // -------------------------------------------------------------
       // STAGE 2: THE APPROACH & FACADE ZOOM (18% - 50%)
       // -------------------------------------------------------------
-      const zoomScale = isMobile ? 4.8 : CONFIG.camera.zoomScale;
-      // Bring Dean's window (62.2% X, 49.9% Y) toward the center of the camera
-      const targetDeltaX = window.innerWidth * (0.50 - (CONFIG.camera.originX / 100));
-      const targetDeltaY = window.innerHeight * (0.50 - (CONFIG.camera.originY / 100));
+      const zoomScale = isMobile ? 3.4 : CONFIG.camera.zoomScale;
+      // Bring Dean's window toward the center of the camera
+      const originXPercent = isMobile ? 60 : CONFIG.camera.originX;
+      const originYPercent = isMobile ? 50 : CONFIG.camera.originY;
+      const targetDeltaX = window.innerWidth * (0.50 - (originXPercent / 100));
+      const targetDeltaY = window.innerHeight * (0.50 - (originYPercent / 100));
 
       masterTimeline
         // Facade zooms into Dean's window
@@ -142,7 +144,7 @@ export const WelcomePage: React.FC = () => {
         }, 40)
         .fromTo(windowCloseupRef.current, {
           opacity: 0,
-          scale: 0.94,
+          scale: isMobile ? 0.97 : 0.94,
         }, {
           opacity: 1,
           scale: 1.0,
@@ -153,10 +155,11 @@ export const WelcomePage: React.FC = () => {
       // -------------------------------------------------------------
       // STAGE 3: THROUGH THE GLASS (50% - 72%)
       // -------------------------------------------------------------
+      const windowScaleEnd = isMobile ? 1.10 : 1.32;
       masterTimeline
         // Window close-up pushes closer into the glass pane
         .to(windowCloseupRef.current, {
-          scale: 1.32,
+          scale: windowScaleEnd,
           duration: 22,
           ease: 'power1.in',
         }, 46)
@@ -186,7 +189,7 @@ export const WelcomePage: React.FC = () => {
         }, 58)
         .fromTo(roomInteriorRef.current, {
           opacity: 0,
-          scale: 1.06,
+          scale: isMobile ? 1.03 : 1.06,
         }, {
           opacity: 1,
           scale: 1.0,
@@ -224,12 +227,12 @@ export const WelcomePage: React.FC = () => {
   return (
     <div
       ref={trackRef}
-      className={`relative w-full ${isMobile ? 'h-[280vh]' : 'h-[380vh]'} bg-[#070b14]`}
+      className={`relative w-full ${isMobile ? 'h-[340vh]' : 'h-[380vh]'} bg-[#070b14]`}
     >
       {/* Sticky Full-Viewport Camera Rig */}
       <div
         ref={viewportRef}
-        className="sticky top-0 w-full h-screen overflow-hidden bg-[#070b14]"
+        className="sticky top-0 w-full h-screen h-[100dvh] overflow-hidden bg-[#070b14]"
       >
         {/* Subtle Film Grain Texture */}
         <div className="absolute inset-0 film-grain pointer-events-none z-40 opacity-30" />
@@ -239,6 +242,7 @@ export const WelcomePage: React.FC = () => {
           facadeRef={facadeRef}
           windowCloseupRef={windowCloseupRef}
           roomInteriorRef={roomInteriorRef}
+          isMobile={isMobile}
         />
 
         {/* 2. Foreground Depth: Canvas Rain & Passing Traffic Bokeh */}
@@ -282,10 +286,10 @@ export const WelcomePage: React.FC = () => {
         {/* Stage 2 Mid-zoom Whisper: "This one’s mine." (Cinematic Subtitle lower-third) */}
         <div
           ref={whisperRef}
-          className="absolute inset-0 flex items-end justify-center pb-20 sm:pb-24 md:pb-28 z-35 pointer-events-none opacity-0 px-6 text-center"
+          className="absolute inset-0 flex items-end justify-center pb-24 sm:pb-24 md:pb-28 z-35 pointer-events-none opacity-0 px-6 text-center"
         >
           <div className="border-l-2 border-amber-400 pl-4 pr-5 py-2 bg-black/80 backdrop-blur-sm pointer-events-auto select-text shadow-2xl">
-            <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-amber-100 font-light tracking-wide">
+            <p className="font-serif italic text-lg sm:text-2xl md:text-3xl text-amber-100 font-light tracking-wide">
               {t.welcome.whisper}
             </p>
           </div>
@@ -294,14 +298,17 @@ export const WelcomePage: React.FC = () => {
         {/* Stage 4 Final Invitation: "Kom binnen." */}
         <div
           ref={comeInRef}
-          className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-35 pointer-events-none opacity-0 flex flex-col items-center gap-2 text-center"
+          className="absolute bottom-20 sm:bottom-12 left-1/2 -translate-x-1/2 z-35 pointer-events-none opacity-0 flex flex-col items-center gap-2 text-center w-max"
         >
-          <div className="px-5 py-2 border border-white/20 bg-[#070b14]/90 backdrop-blur-sm pointer-events-auto select-text flex items-center gap-3">
+          <a
+            href="#portfolio"
+            className="px-5 py-2.5 border border-white/20 bg-[#070b14]/90 backdrop-blur-sm pointer-events-auto select-text flex items-center gap-3 hover:border-amber-400 transition-colors cursor-pointer"
+          >
             <p className="font-serif italic text-base md:text-lg text-amber-100 font-normal">
               {t.welcome.comeIn}
             </p>
             <span className="text-amber-400 font-mono text-xs" aria-hidden="true">↓</span>
-          </div>
+          </a>
         </div>
 
         {/* 6. Ambient Soundscape Toggle */}

@@ -34,7 +34,7 @@ export const SoundToggle: React.FC = () => {
             : 'Mute ambient soundscape'
           : 'Play ambient rain and city soundscape'
       }
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-3.5 py-2 border border-white/15 bg-[#070b14]/90 backdrop-blur-sm text-slate-400 hover:text-slate-100 hover:border-amber-400/50 transition-colors group focus:outline-none focus:border-amber-400 select-text"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 sm:px-3.5 sm:py-2 border border-white/15 bg-[#070b14]/90 backdrop-blur-sm text-slate-400 hover:text-slate-100 hover:border-amber-400/50 transition-colors group focus:outline-none focus:border-amber-400 select-text"
     >
       {isPlaying ? (
         <>
