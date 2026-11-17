@@ -45,13 +45,15 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
     setActiveStillIndex(index);
   };
 
+  const isFilm = project.category === 'film';
+
   // Language-aware content selection
   const isNl = language === 'nl';
   const displayTagline = isNl && project.taglineNl ? project.taglineNl : project.tagline;
   const displayLogline = isNl && project.loglineNl ? project.loglineNl : project.logline;
   const displayOutline = isNl && project.outlineNl ? project.outlineNl : project.outline;
   const displayType = isNl && project.typeNl ? project.typeNl : project.type;
-  const displayRole = isNl && project.myRoleNl ? project.myRoleNl : project.myRole;
+  const displayRole = isNl && project.myRoleNl ? project.myRoleNl : (project.cardRoleNl || project.cardRole);
   const displayWrittenByLabel = isNl && project.writtenByLabelNl
     ? project.writtenByLabelNl
     : (project.writtenByLabel || (isNl ? 'Scenario door' : 'Written by'));
@@ -60,10 +62,158 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
   const openingHeadline = displayTagline || displayLogline;
   const hasSeparateLoglineSection = Boolean(displayTagline && displayLogline);
 
-  const currentStill = project.stills[activeStillIndex];
+  const currentStill = project.stills[activeStillIndex] || project.stills[0];
   const stillCaption = isNl && currentStill?.characterDetailNl
     ? currentStill.characterDetailNl
     : currentStill?.characterDetail;
+
+  // NON-FILM SHOWCASE: Clean visual layout without film-specific crew/cast/synopsis
+  if (!isFilm) {
+    return (
+      <article
+        id={`${project.id}-page`}
+        aria-label={`${project.displayTitle}`}
+        className="min-h-screen w-full bg-[#070b14] text-slate-100 pb-28 selection:bg-amber-500/20 selection:text-amber-200 select-text"
+      >
+        {/* Top back button */}
+        <header className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50">
+          <button
+            onClick={onBackToStory}
+            type="button"
+            aria-label={t.nav.backToPortfolio}
+            className="group flex items-center gap-2 px-3.5 py-1.5 border border-white/20 bg-[#070b14]/90 backdrop-blur-sm text-xs font-mono tracking-widest uppercase text-slate-300 hover:text-amber-200 hover:border-amber-400 transition-colors duration-200 focus:outline-none focus:border-amber-400"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>{t.nav.backToPortfolio}</span>
+          </button>
+        </header>
+
+        {/* 1. Header: Title, Creator, Verified Context */}
+        <section className="pt-24 sm:pt-28 pb-8 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-3">
+          <p className="text-xs font-mono tracking-[0.3em] uppercase text-amber-400/90">
+            {displayType} · {project.year}
+          </p>
+
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-slate-100 tracking-tight leading-[1.2]">
+            {project.displayTitle}
+          </h1>
+
+          <p className="text-xs sm:text-sm font-mono tracking-wider text-slate-300 uppercase">
+            {isNl
+              ? (project.madeByNl || 'Gemaakt door Dean van Uden')
+              : (project.madeBy || 'Created by Dean van Uden')}
+          </p>
+
+          {(project.noteNl || project.note) && (
+            <p className="font-serif text-base sm:text-lg text-slate-300 font-light max-w-2xl mx-auto leading-relaxed pt-2">
+              {isNl ? project.noteNl : (project.note || project.noteNl)}
+            </p>
+          )}
+        </section>
+
+        {/* 2. Visual Frame: Adapts to portrait or landscape so the photo fits 100% */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
+          <div
+            className={`relative mx-auto overflow-hidden border border-white/15 bg-black/90 shadow-2xl ${
+              project.aspectRatio === 'portrait'
+                ? 'max-w-xl aspect-[4/5] sm:aspect-[3/4]'
+                : 'w-full aspect-[16/10] sm:aspect-[3/2]'
+            }`}
+          >
+            <img
+              src={currentStill?.image || project.card.stillImage}
+              alt={currentStill?.alt || project.displayTitle}
+              className="w-full h-full object-contain mx-auto block"
+            />
+
+            {/* Sonder Caption */}
+            {stillCaption && (
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 pointer-events-none">
+                <div className="inline-block border-l-2 border-amber-400 px-4 py-2 bg-black/85 backdrop-blur-sm pointer-events-auto">
+                  <p className="text-xs sm:text-sm font-serif italic text-amber-100 font-light tracking-wide">
+                    {stillCaption}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Thumbnail strip (if multiple stills exist) */}
+          {project.stills.length > 1 && (
+            <div className="mt-6">
+              <div className="flex items-center justify-between mb-3 text-xs font-mono tracking-wider text-slate-400">
+                <span className="uppercase">{t.portfolio.stills}</span>
+                <span>
+                  {activeStillIndex + 1} / {project.stills.length}
+                </span>
+              </div>
+              <div
+                ref={galleryScrollRef}
+                className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none"
+              >
+                {project.stills.map((still, idx) => (
+                  <button
+                    key={still.id}
+                    onClick={() => handleStillSelect(idx)}
+                    type="button"
+                    className={`relative flex-shrink-0 ${
+                      project.aspectRatio === 'portrait'
+                        ? 'w-20 sm:w-24 aspect-[3/4]'
+                        : 'w-28 sm:w-36 aspect-[16/10]'
+                    } overflow-hidden border bg-black/70 transition-colors duration-200 focus:outline-none focus:border-amber-400 ${
+                      activeStillIndex === idx
+                        ? 'border-amber-400'
+                        : 'border-white/15 opacity-60 hover:opacity-100 hover:border-white/40'
+                    }`}
+                    aria-label={`View still ${idx + 1}: ${still.alt}`}
+                  >
+                    <img
+                      src={still.image}
+                      alt={still.alt}
+                      className="w-full h-full object-contain p-0.5"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* External Action Link */}
+          {(project.links.instagram || (project.links.external && !project.links.external.startsWith('#'))) && (
+            <div className="flex items-center justify-center mt-8">
+              <a
+                href={project.links.instagram || project.links.external}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-4 py-2 border border-white/20 bg-[#0a0f1d] hover:border-amber-400 hover:text-amber-200 transition-colors text-slate-200 text-xs sm:text-sm font-mono tracking-wider"
+              >
+                {project.links.instagram ? (
+                  <Instagram className="w-4 h-4 text-amber-400" />
+                ) : (
+                  <ExternalLink className="w-4 h-4 text-amber-400" />
+                )}
+                <span>{project.links.externalLabel || (isNl ? 'Bekijk op Instagram' : 'View on Instagram')}</span>
+              </a>
+            </div>
+          )}
+        </section>
+
+        {/* Quiet Back to Portfolio Link */}
+        <footer className="text-center pt-8">
+          <button
+            onClick={onBackToStory}
+            type="button"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono tracking-[0.25em] uppercase text-slate-400 hover:text-amber-200 transition-colors duration-300 focus:outline-none focus:text-amber-300"
+          >
+            <span aria-hidden="true">←</span>
+            <span>{t.nav.backToPortfolio}</span>
+          </button>
+        </footer>
+      </article>
+    );
+  }
+
+  // FILM CASE STUDY: Full cinematic layout with video facade, synopsis and film end credits
 
   return (
     <article

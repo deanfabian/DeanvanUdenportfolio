@@ -31,13 +31,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const isNl = language === 'nl';
   const roleText = isNl && project.cardRoleNl ? project.cardRoleNl : project.cardRole;
   const typeText = isNl && project.typeNl ? project.typeNl : project.type;
+  const isPortrait = project.aspectRatio === 'portrait';
 
   return (
     <a
       href={`#${project.slug}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative block w-full aspect-[16/10] sm:aspect-[16/9] overflow-hidden border border-white/15 bg-[#0a0f1d] hover:border-white/40 transition-colors focus:outline-none focus:border-amber-400 select-text"
+      className={`group relative block w-full ${
+        isPortrait ? 'aspect-[4/5] sm:aspect-[3/4]' : 'aspect-[16/10] sm:aspect-[16/9]'
+      } overflow-hidden border border-white/15 bg-[#0a0f1d] hover:border-white/40 transition-colors focus:outline-none focus:border-amber-400 select-text`}
       aria-label={`${project.displayTitle} →`}
     >
       {/* 1. Base Still Frame */}
@@ -49,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       />
 
       {/* 2. Muted Video Preview Loop */}
-      {!prefersReducedMotion && (
+      {!prefersReducedMotion && project.card.previewVideo && (
         <video
           ref={videoRef}
           src={project.card.previewVideo}
@@ -158,10 +161,12 @@ export const PortfolioSection: React.FC = () => {
           })}
         </div>
 
-        {/* Projects Grid: 2 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+        {/* Projects Grid: adapts to portrait and landscape formats naturally */}
+        <div className="columns-1 md:columns-2 gap-8 sm:gap-10 space-y-8 sm:space-y-10 [column-fill:_balance]">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <div key={project.id} className="break-inside-avoid">
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
       </div>
