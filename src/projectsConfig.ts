@@ -214,10 +214,15 @@ export const PROJECTS: Record<string, Project> = {
     },
     card: {
       stillImage: assetUrl('/assets/projects/twins/hero.jpg'),
-      previewVideo: assetUrl('/assets/projects/twins/preview.mp4'),
-      previewVideoWebm: assetUrl('/assets/projects/twins/preview.webm'),
     },
     stills: [
+      {
+        id: 'twins-logo',
+        image: assetUrl('/assets/projects/twins/hero.jpg'),
+        characterDetail: 'Brabant Twins clubidentiteit en logo.',
+        characterDetailNl: 'Brabant Twins clubidentiteit en logo.',
+        alt: 'Brabant Twins logo',
+      },
       {
         id: 'windsant',
         image: assetUrl('/assets/projects/twins/player-windsant.jpg'),
@@ -231,27 +236,6 @@ export const PROJECTS: Record<string, Project> = {
         characterDetail: '2026 Spelersaankondiging · Niek van Alebeek (Pitcher) met walk-up track "Tijdmachine".',
         characterDetailNl: '2026 Spelersaankondiging · Niek van Alebeek (Pitcher) met walk-up track "Tijdmachine".',
         alt: 'Niek van Alebeek player announcement graphic',
-      },
-      {
-        id: 'gameday',
-        image: assetUrl('/assets/projects/twins/still-1.jpg'),
-        characterDetail: 'Matchday Line-ups & Stories.',
-        characterDetailNl: 'Matchday Line-ups & Stories.',
-        alt: 'Matchday line-up visual',
-      },
-      {
-        id: 'action',
-        image: assetUrl('/assets/projects/twins/still-2.jpg'),
-        characterDetail: 'Diamond Intensity · Focus op de heuvel.',
-        characterDetailNl: 'Diamond Intensity · Focus op de heuvel.',
-        alt: 'Pitcher mechanics visual',
-      },
-      {
-        id: 'culture',
-        image: assetUrl('/assets/projects/twins/still-3.jpg'),
-        characterDetail: 'Clubcultuur op en rondom het veld.',
-        characterDetailNl: 'Clubcultuur op en rondom het veld.',
-        alt: 'Youth baseball clinic',
       },
     ],
   },
