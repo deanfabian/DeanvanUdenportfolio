@@ -151,6 +151,7 @@ export const StorySection: React.FC = () => {
             <p className="text-lg sm:text-xl text-slate-200">{t.story.ch4.p1}</p>
             <p className="text-lg sm:text-xl text-slate-200">{t.story.ch4.p2}</p>
             <p className="text-lg sm:text-xl text-slate-200">{t.story.ch4.p3}</p>
+            <p className="text-lg sm:text-xl text-slate-200">{t.story.ch4.p4}</p>
             <div className="pt-2">
               <a
                 href="#contact"

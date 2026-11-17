@@ -74,6 +74,7 @@ export interface Translations {
       p1: string;
       p2: string;
       p3: string;
+      p4: string;
       linkMail: string;
     };
   };
@@ -161,8 +162,9 @@ export const translations: Record<Language, Translations> = {
       ch4: {
         title: 'IV. Het volgende raam',
         p1: 'Ik zoek mijn volgende kamer.',
-        p2: 'Een productie, een mediateam, een kanaal dat verhalen wil vertellen over mensen die je anders voorbij zou lopen.',
-        p3: 'Ergens met veel ramen.',
+        p2: 'Achter elk raam zit een verhaal. De meeste zijn nog nooit verteld.',
+        p3: 'Een productie, een mediateam, een kanaal dat daar iets aan wil doen.',
+        p4: 'Ergens met veel ramen.',
         linkMail: 'Mail me →',
       },
     },
@@ -248,8 +250,9 @@ export const translations: Record<Language, Translations> = {
       ch4: {
         title: 'IV. The next window',
         p1: 'I am looking for my next room.',
-        p2: 'A production, a media team, a channel that wants to tell stories about people you would otherwise walk past.',
-        p3: 'Somewhere with a lot of windows.',
+        p2: 'Behind every window sits a story. Most have never been told.',
+        p3: 'A production, a media team, a channel that wants to do something about that.',
+        p4: 'Somewhere with a lot of windows.',
         linkMail: 'Mail me →',
       },
     },
