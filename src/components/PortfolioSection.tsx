@@ -127,7 +127,7 @@ export const PortfolioSection: React.FC = () => {
       className="relative min-h-screen w-full bg-[#070b14] px-4 sm:px-8 md:px-12 py-24 sm:py-32 border-t border-white/10"
     >
       <div className="w-full max-w-6xl mx-auto select-text space-y-10 sm:space-y-12">
-        {/* Clean Header: "Films en content." */}
+        {/* Clean Header: "Portfolio" */}
         <div className="border-b border-white/10 pb-6">
           <h2 className="font-serif text-3xl sm:text-5xl text-slate-100 font-light tracking-tight">
             {t.portfolio.title}

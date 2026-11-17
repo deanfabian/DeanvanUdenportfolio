@@ -107,7 +107,7 @@ export const translations: Record<Language, Translations> = {
       quietInside: 'Binnen · Stilte',
     },
     portfolio: {
-      title: 'Films en content.',
+      title: 'Portfolio',
       filterAll: 'Alle',
       filterFilms: 'Film & Fictie',
       filterSocial: 'Social Media & Content',
@@ -194,7 +194,7 @@ export const translations: Record<Language, Translations> = {
       quietInside: 'Inside · Quiet',
     },
     portfolio: {
-      title: 'Films and content.',
+      title: 'Portfolio',
       filterAll: 'All',
       filterFilms: 'Film & Fiction',
       filterSocial: 'Social Media & Content',
