@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, ArrowLeft, ExternalLink } from 'lucide-react';
+import { Play, ArrowLeft, ExternalLink, Instagram } from 'lucide-react';
 import { Project } from '../projectsConfig';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { useLanguage } from '../context/LanguageContext';
@@ -190,15 +190,38 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               />
             )
           ) : (
-            /* Visual Showcase for non-embed projects (e.g. Brabant Twins) */
-            <div className="relative w-full h-full">
+            /* Interactive Visual Showcase for non-embed projects (e.g. Brabant Twins Instagram) */
+            <a
+              href={project.links.instagram || project.links.external || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-full h-full block focus:outline-none focus:ring-2 focus:ring-amber-400"
+              aria-label={`Open ${project.displayTitle} on Instagram`}
+            >
               <img
                 src={project.card.stillImage}
                 alt={`${project.displayTitle} showcase`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30 pointer-events-none" />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-slate-950/30 group-hover:via-slate-950/25 transition-colors duration-500" />
+
+              {/* Instagram Card Overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-500">
+                <div className="flex flex-col items-center gap-3 px-6 py-5 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-700/80 shadow-[0_12px_40px_rgba(0,0,0,0.9)] transition-all duration-300 group-hover:border-sky-400/80 group-hover:scale-105">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-900 border border-sky-400/80 flex items-center justify-center text-sky-400 shadow-[0_0_25px_rgba(56,189,248,0.35)] transition-colors group-hover:bg-sky-500 group-hover:text-slate-950">
+                    <Instagram className="w-6 h-6 sm:w-8 sm:h-8" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-slate-100 group-hover:text-sky-200 transition-colors block font-semibold">
+                      {project.links.externalLabel || (isNl ? 'Bekijk @brabanttwins op Instagram' : 'View @brabanttwins on Instagram')}
+                    </span>
+                    <span className="text-[11px] font-mono tracking-wider text-slate-400 block">
+                      instagram.com/brabanttwins ↗
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
           )}
         </div>
 
@@ -229,17 +252,18 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               </a>
             </>
           )}
-          {project.links.external && (
+          {(project.links.instagram || project.links.external) && (
             <>
               {project.links.youtube && <span className="text-slate-700 hidden sm:inline" aria-hidden="true">·</span>}
               <a
-                href={project.links.external}
+                href={project.links.instagram || project.links.external}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-1.5 transition-colors duration-300 hover:text-amber-300"
+                className="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-sky-400/60 hover:text-sky-300 transition-all duration-300 text-slate-200"
               >
-                <span>{project.links.externalLabel || (isNl ? 'Bekijk extern' : 'View External')}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
+                <Instagram className="w-4 h-4 text-sky-400 group-hover:text-sky-300 transition-colors" />
+                <span>{project.links.externalLabel || (isNl ? 'Bekijk op Instagram' : 'View on Instagram')}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-sky-300 transition-colors" />
               </a>
             </>
           )}

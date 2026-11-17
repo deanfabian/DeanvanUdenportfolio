@@ -41,6 +41,7 @@ export interface Project {
     imdb?: string;
     external?: string;
     externalLabel?: string;
+    instagram?: string;
   };
   embedUrl?: string;
   card: {
@@ -208,7 +209,8 @@ export const PROJECTS: Record<string, Project> = {
     locations: 'Sportpark De Slotbosse Toren, Oosterhout',
     links: {
       external: 'https://www.instagram.com/brabanttwins/',
-      externalLabel: 'Bekijk op Instagram',
+      externalLabel: 'Bekijk @brabanttwins op Instagram',
+      instagram: 'https://www.instagram.com/brabanttwins/',
     },
     card: {
       stillImage: assetUrl('/assets/projects/twins/hero.jpg'),
