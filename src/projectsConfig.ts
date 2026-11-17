@@ -11,7 +11,7 @@ export interface ProjectStill {
 export interface Project {
   id: string;
   slug: string;
-  category: 'film' | 'social' | 'design';
+  category: 'film' | 'social' | 'design' | 'photography';
   title: string;
   displayTitle: string;
   workingTitle?: string;
@@ -46,8 +46,8 @@ export interface Project {
   embedUrl?: string;
   card: {
     stillImage: string;
-    previewVideo: string;
-    previewVideoWebm: string;
+    previewVideo?: string;
+    previewVideoWebm?: string;
   };
   stills: ProjectStill[];
 }
@@ -222,6 +222,20 @@ export const PROJECTS: Record<string, Project> = {
     },
     stills: [
       {
+        id: 'windsant',
+        image: assetUrl('/assets/projects/twins/player-windsant.jpg'),
+        characterDetail: '2026 Spelersaankondiging · Thomas Windsant (Catcher) met walk-up track "The Largest".',
+        characterDetailNl: '2026 Spelersaankondiging · Thomas Windsant (Catcher) met walk-up track "The Largest".',
+        alt: 'Thomas Windsant player announcement graphic',
+      },
+      {
+        id: 'van-alebeek',
+        image: assetUrl('/assets/projects/twins/player-van-alebeek.jpg'),
+        characterDetail: '2026 Spelersaankondiging · Niek van Alebeek (Pitcher) met walk-up track "Tijdmachine".',
+        characterDetailNl: '2026 Spelersaankondiging · Niek van Alebeek (Pitcher) met walk-up track "Tijdmachine".',
+        alt: 'Niek van Alebeek player announcement graphic',
+      },
+      {
         id: 'gameday',
         image: assetUrl('/assets/projects/twins/still-1.jpg'),
         characterDetail: 'Matchday Line-ups & Stories. Directe publicatie tijdens het speelweekend.',
@@ -371,6 +385,247 @@ export const PROJECTS: Record<string, Project> = {
       },
     ],
   },
+
+  'beyond-bases': {
+    id: 'beyond-bases',
+    slug: 'beyond-bases',
+    category: 'design',
+    title: 'Beyond Bases — Brandbook & Visuele Identiteit',
+    displayTitle: 'Beyond Bases',
+    year: '2024–heden',
+    type: 'Brandbook & visual identity',
+    typeNl: 'Brandbook & visuele identiteit',
+    production: 'Beyond Bases — Baseball Mindset & Apparel',
+    myRole: 'Founder & Brand Designer',
+    myRoleNl: 'Oprichter & brand designer',
+    cardRole: 'Brand identity',
+    cardRoleNl: 'Brand identity',
+    tagline: 'Wear your story. Kleding als drager van mentale veerkracht.',
+    taglineNl: 'Wear your story. Kleding als drager van mentale veerkracht.',
+    logline: 'Het officiële brandbook voor Beyond Bases: een purpose-driven kledingmerk voor Europese honkballers dat het taboe rond mentale gezondheid in de sport doorbreekt.',
+    loglineNl: 'Het officiële brandbook voor Beyond Bases: een purpose-driven kledingmerk voor Europese honkballers dat het taboe rond mentale gezondheid in de sport doorbreekt.',
+    outline: 'Beyond Bases combineert sport, cultuur en emotioneel welzijn. In het brandbook legde ik de complete merkidentiteit vast: van de overkoepelende filosofie "Wear Your Story" tot de tone of voice en het doordachte kleurenpalet (Midnight Navy, Off-White, Sage Wellness en Diamond Clay, direct geïnspireerd op het gravel van het infield).',
+    outlineNl: 'Beyond Bases combineert sport, cultuur en emotioneel welzijn. In het brandbook legde ik de complete merkidentiteit vast: van de overkoepelende filosofie "Wear Your Story" tot de tone of voice en het doordachte kleurenpalet (Midnight Navy, Off-White, Sage Wellness en Diamond Clay, direct geïnspireerd op het gravel van het infield).',
+    writtenBy: 'Merkstrategie · Brandbook Design · Typografie · Kleurenpalet',
+    writtenByLabel: 'Disciplines',
+    writtenByLabelNl: 'Werkzaamheden',
+    crew: 'Brand Concept & Design — Dean van Uden · Merk — Beyond Bases',
+    cast: 'Wear Your Story Manifesto & Color System',
+    locations: 'Breda & Oosterhout',
+    links: {
+      external: '#contact',
+      externalLabel: 'Neem contact op over Beyond Bases',
+    },
+    card: {
+      stillImage: assetUrl('/assets/projects/beyond-bases/wear-your-story.png'),
+    },
+    stills: [
+      {
+        id: 'wear-your-story',
+        image: assetUrl('/assets/projects/beyond-bases/wear-your-story.png'),
+        characterDetail: 'Wear Your Story · De kernboodschap: kleding als medium voor openheid en mentale kracht.',
+        characterDetailNl: 'Wear Your Story · De kernboodschap: kleding als medium voor openheid en mentale kracht.',
+        alt: 'Beyond Bases Wear Your Story brand manifesto spread',
+      },
+      {
+        id: 'color-palette',
+        image: assetUrl('/assets/projects/beyond-bases/colors.png'),
+        characterDetail: 'Color Palette & Usage · Midnight Navy, Off-White, Sage Wellness en Diamond Clay (infield gravel).',
+        characterDetailNl: 'Color Palette & Usage · Midnight Navy, Off-White, Sage Wellness en Diamond Clay (infield gravel).',
+        alt: 'Beyond Bases color palette and usage page',
+      },
+    ],
+  },
+
+  'twins-graphics': {
+    id: 'twins-graphics',
+    slug: 'twins-graphics',
+    category: 'design',
+    title: 'Brabant Twins — Spelersaankondigingen 2026',
+    displayTitle: 'Spelersaankondigingen',
+    year: '2025–2026',
+    type: 'Social media graphics & visual design',
+    typeNl: 'Social media graphics & visueel ontwerp',
+    production: 'Brabant Twins Oosterhout',
+    myRole: 'Visual Designer & Social Media',
+    myRoleNl: 'Visueel ontwerper & social media',
+    cardRole: 'Graphic design',
+    cardRoleNl: 'Graphic design',
+    tagline: 'Karaktervolle social media graphics voor de 2026-selectie van Brabant Twins.',
+    taglineNl: 'Karaktervolle social media graphics voor de 2026-selectie van Brabant Twins.',
+    logline: 'Instagram-aankondigingsposters voor nieuwe spelers van Brabant Twins, vormgegeven met dynamische actie-uitsnedes, vintage texturen en persoonlijke walk-up nummers.',
+    loglineNl: 'Instagram-aankondigingsposters voor nieuwe spelers van Brabant Twins, vormgegeven met dynamische actie-uitsnedes, vintage texturen en persoonlijke walk-up nummers.',
+    outline: 'Voor de transfers van het seizoen 2026 ontwierp ik een serie krachtige visuals die de energie van honkbal combineren met popcultuur. Elke poster bevat dynamische uitsparingen van de atleet in actie, clubkleuren, getextureerde achtergronden en een gestileerde Spotify-player met de walk-up track van de speler (zoals "Tijdmachine" voor Niek van Alebeek en "The Largest" voor Thomas Windsant).',
+    outlineNl: 'Voor de transfers van het seizoen 2026 ontwierp ik een serie krachtige visuals die de energie van honkbal combineren met popcultuur. Elke poster bevat dynamische uitsparingen van de atleet in actie, clubkleuren, getextureerde achtergronden en een gestileerde Spotify-player met de walk-up track van de speler (zoals "Tijdmachine" voor Niek van Alebeek en "The Largest" voor Thomas Windsant).',
+    writtenBy: 'Grafisch Ontwerp · Beeldbewerking · Poster Design · Typografie',
+    writtenByLabel: 'Disciplines',
+    writtenByLabelNl: 'Werkzaamheden',
+    crew: 'Visual Design & Content — Dean van Uden · Club — Brabant Twins',
+    cast: 'Thomas Windsant (Catcher) · Niek van Alebeek (Pitcher)',
+    locations: 'Oosterhout',
+    links: {
+      instagram: 'https://www.instagram.com/brabanttwins/',
+      externalLabel: 'Bekijk @brabanttwins op Instagram',
+    },
+    card: {
+      stillImage: assetUrl('/assets/projects/twins-graphics/thomas-windsant.jpg'),
+    },
+    stills: [
+      {
+        id: 'windsant',
+        image: assetUrl('/assets/projects/twins-graphics/thomas-windsant.jpg'),
+        characterDetail: 'Thomas Windsant · Catcher in actie, donkerblauw reliëf en track-overlay "The Largest".',
+        characterDetailNl: 'Thomas Windsant · Catcher in actie, donkerblauw reliëf en track-overlay "The Largest".',
+        alt: 'Brabant Twins 2026 player announcement graphic for Thomas Windsant',
+      },
+      {
+        id: 'van-alebeek',
+        image: assetUrl('/assets/projects/twins-graphics/niek-van-alebeek.jpg'),
+        characterDetail: 'Niek van Alebeek · Pitcher in beweging, oranje typografie en track-overlay "Tijdmachine".',
+        characterDetailNl: 'Niek van Alebeek · Pitcher in beweging, oranje typografie en track-overlay "Tijdmachine".',
+        alt: 'Brabant Twins 2026 player announcement graphic for Niek van Alebeek',
+      },
+    ],
+  },
+
+  'boer-tot-bord': {
+    id: 'boer-tot-bord',
+    slug: 'boer-tot-bord',
+    category: 'design',
+    title: 'Lekker van Hier — Boer tot Bord Altena',
+    displayTitle: 'Boer tot Bord Altena',
+    year: '2024',
+    type: 'Website design & interface concept, BUas',
+    typeNl: 'Website design & interface concept, BUas',
+    production: 'Living Lab Boer tot Bord Altena · Schoolproject BUas',
+    myRole: 'UI / Web Designer',
+    myRoleNl: 'UI / Webdesigner',
+    cardRole: 'Web design',
+    cardRoleNl: 'Webdesign',
+    tagline: 'Van eigen bodem, rechtstreeks naar jouw bord.',
+    taglineNl: 'Van eigen bodem, rechtstreeks naar jouw bord.',
+    logline: 'Websiteontwerp voor het Living Lab Boer tot Bord in de regio Altena: een lokaal platform dat de keten tussen boer, verwerker en consument korter en inzichtelijk maakt.',
+    loglineNl: 'Websiteontwerp voor het Living Lab Boer tot Bord in de regio Altena: een lokaal platform dat de keten tussen boer, verwerker en consument korter en inzichtelijk maakt.',
+    outline: 'Als schoolproject bij Creative Business (BUas) ontwierpen we de digitale identiteit en homepage voor het Living Lab Boer tot Bord Altena. Het doel van het project was om de reis van lokaal geteeld voedsel (zoals regionale sojabonen verwerkt tot tempeh) transparant te visualiseren voor bewoners, zorginstellingen en horeca. Het ontwerp kenmerkt zich door een warme, natuurlijke kleurkeuze en een overzichtelijke ketenpresentatie.',
+    outlineNl: 'Als schoolproject bij Creative Business (BUas) ontwierpen we de digitale identiteit en homepage voor het Living Lab Boer tot Bord Altena. Het doel van het project was om de reis van lokaal geteeld voedsel (zoals regionale sojabonen verwerkt tot tempeh) transparant te visualiseren voor bewoners, zorginstellingen en horeca. Het ontwerp kenmerkt zich door een warme, natuurlijke kleurkeuze en een overzichtelijke ketenpresentatie.',
+    writtenBy: 'Webdesign · Interface Concept · Typografie · Ketenvisualisatie',
+    writtenByLabel: 'Disciplines',
+    writtenByLabelNl: 'Werkzaamheden',
+    crew: 'Interface Concept & Webdesign — Dean van Uden e.a. · Opleiding — BUas Creative Business',
+    cast: 'Homepage Hero & Ketenstructuur',
+    locations: 'Regio Altena & Breda',
+    links: {
+      external: '#contact',
+      externalLabel: 'Neem contact op over webdesign',
+    },
+    card: {
+      stillImage: assetUrl('/assets/projects/boer-tot-bord/frontpage.jpg'),
+    },
+    stills: [
+      {
+        id: 'hero-frontpage',
+        image: assetUrl('/assets/projects/boer-tot-bord/frontpage.jpg'),
+        characterDetail: 'Homepage Hero · "Van eigen bodem, rechtstreeks naar jouw bord." Heldere navigatie en lokale ketenidentiteit.',
+        characterDetailNl: 'Homepage Hero · "Van eigen bodem, rechtstreeks naar jouw bord." Heldere navigatie en lokale ketenidentiteit.',
+        alt: 'Lekker van Hier Boer tot Bord Altena website front page',
+      },
+    ],
+  },
+
+  unpluggd: {
+    id: 'unpluggd',
+    slug: 'unpluggd',
+    category: 'design',
+    title: 'Unplugg’d Magazine — Editorial Cover Design',
+    displayTitle: 'Unplugg’d Magazine',
+    year: '2024',
+    type: 'Editorial cover & magazine design, BUas',
+    typeNl: 'Editorial cover & magazine design, BUas',
+    production: 'BUas Creative Business — Eerstejaars magazineproject',
+    myRole: 'Editorial Designer & Cover Artist',
+    myRoleNl: 'Editorial designer & cover artist',
+    cardRole: 'Editorial design',
+    cardRoleNl: 'Editorial design',
+    tagline: 'When screens fade away. Less is more.',
+    taglineNl: 'When screens fade away. Less is more.',
+    logline: 'Coverontwerp voor Unplugg’d, ons eerste magazineproject bij Creative Business aan BUas, gericht op digital detox, focus en het doorbreken van constante connectiviteit.',
+    loglineNl: 'Coverontwerp voor Unplugg’d, ons eerste magazineproject bij Creative Business aan BUas, gericht op digital detox, focus en het doorbreken van constante connectiviteit.',
+    outline: 'Unplugg’d was het eerste magazine dat we ontwikkelden binnen de opleiding Creative Business aan BUas. Het centrale thema was het heroveren van rust in een wereld vol digitale prikkels. Voor de cover koos ik voor een compositie waarin een eenling uitkijkt over de grandeur van Half Dome (Yosemite), gecontrasteerd met een dubbele belichting van oplichtende smartphones in de wolkenlucht. Een quote-cirkel met wereldkampioen honkbal Kalian Sams ("Control what you can control") vormt het ankerpunt van de cover.',
+    outlineNl: 'Unplugg’d was het eerste magazine dat we ontwikkelden binnen de opleiding Creative Business aan BUas. Het centrale thema was het heroveren van rust in een wereld vol digitale prikkels. Voor de cover koos ik voor een compositie waarin een eenling uitkijkt over de grandeur van Half Dome (Yosemite), gecontrasteerd met een dubbele belichting van oplichtende smartphones in de wolkenlucht. Een quote-cirkel met wereldkampioen honkbal Kalian Sams ("Control what you can control") vormt het ankerpunt van de cover.',
+    writtenBy: 'Cover Design · Typografie · Fotocompositie · Editorial Layout',
+    writtenByLabel: 'Disciplines',
+    writtenByLabelNl: 'Werkzaamheden',
+    crew: 'Cover & Editorial Design — Dean van Uden · Opleiding — BUas Creative Business',
+    cast: 'Cover Spread met Kalian Sams feature',
+    locations: 'Breda',
+    links: {
+      external: '#contact',
+      externalLabel: 'Neem contact op over editorial design',
+    },
+    card: {
+      stillImage: assetUrl('/assets/projects/unpluggd/cover.jpg'),
+    },
+    stills: [
+      {
+        id: 'cover',
+        image: assetUrl('/assets/projects/unpluggd/cover.jpg'),
+        characterDetail: 'Cover Unplugg’d Nr. 1 · Typografie, dubbele belichting en quote-badge van Kalian Sams.',
+        characterDetailNl: 'Cover Unplugg’d Nr. 1 · Typografie, dubbele belichting en quote-badge van Kalian Sams.',
+        alt: 'Unpluggd magazine cover design',
+      },
+    ],
+  },
+
+  photography: {
+    id: 'photography',
+    slug: 'sportfotografie',
+    category: 'photography',
+    title: 'Sportfotografie — Softbal & Honkbal',
+    displayTitle: 'Sportfotografie',
+    year: '2024–heden',
+    type: 'Wedstrijd- & actiefotografie, Oosterhout',
+    typeNl: 'Wedstrijd- & actiefotografie, Oosterhout',
+    production: 'Sportfotografie & Veldreportages',
+    myRole: 'Fotograaf',
+    myRoleNl: 'Fotograaf',
+    cardRole: 'Fotografie',
+    cardRoleNl: 'Fotografie',
+    tagline: 'Het juiste moment op het veld, vastgelegd in een honderdste van een seconde.',
+    taglineNl: 'Het juiste moment op het veld, vastgelegd in een honderdste van een seconde.',
+    logline: 'Wedstrijdfotografie langs de krijtlijnen: actiemomenten, anticipatie en de intense focus van speelsters in het heetst van de strijd.',
+    loglineNl: 'Wedstrijdfotografie langs de krijtlijnen: actiemomenten, anticipatie en de intense focus van speelsters in het heetst van de strijd.',
+    outline: 'Als sportfotograaf draait het om anticiperen. Weten waar de bal heengaat voordat hij geslagen wordt, de timing van een swing, en de blik van de catcher door het masker. Deze beelden vangen de dynamiek en de fysieke concentratie van softbal en honkbal in het veld.',
+    outlineNl: 'Als sportfotograaf draait het om anticiperen. Weten waar de bal heengaat voordat hij geslagen wordt, de timing van een swing, en de blik van de catcher door het masker. Deze beelden vangen de dynamiek en de fysieke concentratie van softbal en honkbal in het veld.',
+    writtenBy: 'Wedstrijdfotografie · Actieshots · Portretten · Kleurbewerking',
+    writtenByLabel: 'Disciplines',
+    writtenByLabelNl: 'Werkzaamheden',
+    crew: 'Fotografie — Dean van Uden · Locaties — Oosterhout & regio',
+    cast: 'Speelsters & teams softbal',
+    locations: 'Sportpark De Slotbosse Toren, Oosterhout',
+    links: {
+      external: '#contact',
+      externalLabel: 'Neem contact op voor fotoreportages',
+    },
+    card: {
+      stillImage: assetUrl('/assets/projects/photography/catcher.jpg'),
+    },
+    stills: [
+      {
+        id: 'catcher',
+        image: assetUrl('/assets/projects/photography/catcher.jpg'),
+        characterDetail: 'Focus achter het masker · Portret van de catcher voor de start van de inning onder een dreigende lucht.',
+        characterDetailNl: 'Focus achter het masker · Portret van de catcher voor de start van de inning onder een dreigende lucht.',
+        alt: 'Softball catcher portret in wedstrijduitrusting',
+      },
+      {
+        id: 'diamond-action',
+        image: assetUrl('/assets/projects/photography/action.jpg'),
+        characterDetail: 'Het moment van de slag · Slagvrouw in positie, catcher en scheidsrechter gereed op de thuisplaat.',
+        characterDetailNl: 'Het moment van de slag · Slagvrouw in positie, catcher en scheidsrechter gereed op de thuisplaat.',
+        alt: 'Softbal actieshot bij de thuisplaat met slagvrouw, catcher en scheidsrechter',
+      },
+    ],
+  },
 };
 
 // Aliases for convenience
@@ -378,3 +633,10 @@ PROJECTS['the-throwers-lab'] = PROJECTS['throwers-lab'];
 PROJECTS.throwersLab = PROJECTS['throwers-lab'];
 PROJECTS['graphic-design'] = PROJECTS['logo-design'];
 PROJECTS['logoDesign'] = PROJECTS['logo-design'];
+PROJECTS['beyondbases'] = PROJECTS['beyond-bases'];
+PROJECTS['twinsgraphics'] = PROJECTS['twins-graphics'];
+PROJECTS['twins-player-announcements'] = PROJECTS['twins-graphics'];
+PROJECTS['boertotbord'] = PROJECTS['boer-tot-bord'];
+PROJECTS['lekker-van-hier'] = PROJECTS['boer-tot-bord'];
+PROJECTS['unplugg-d'] = PROJECTS.unpluggd;
+PROJECTS['sportfotografie'] = PROJECTS.photography;

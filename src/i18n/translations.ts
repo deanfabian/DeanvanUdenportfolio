@@ -30,6 +30,7 @@ export interface Translations {
     filterFilms: string;
     filterSocial: string;
     filterDesign: string;
+    filterPhotography: string;
     watchYouTube: string;
     viewImdb: string;
     credits: string;
@@ -111,6 +112,7 @@ export const translations: Record<Language, Translations> = {
       filterFilms: 'Film & Fictie',
       filterSocial: 'Social Media & Content',
       filterDesign: 'Graphic Design',
+      filterPhotography: 'Fotografie',
       watchYouTube: 'Bekijk op YouTube',
       viewImdb: 'Bekijk op IMDb',
       credits: 'Credits & Crew',
@@ -197,6 +199,7 @@ export const translations: Record<Language, Translations> = {
       filterFilms: 'Film & Fiction',
       filterSocial: 'Social Media & Content',
       filterDesign: 'Graphic Design',
+      filterPhotography: 'Photography',
       watchYouTube: 'Watch on YouTube',
       viewImdb: 'View on IMDb',
       credits: 'Credits & Crew',

@@ -199,13 +199,13 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
 
-              {/* Project Card Action Overlay (if external link or instagram available) */}
-              {(project.links.instagram || (project.links.external && project.links.external !== '#')) && (
+              {/* Project Card Action Overlay (only for external links / instagram) */}
+              {(project.links.instagram || (project.links.external && !project.links.external.startsWith('#'))) && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                   <a
                     href={project.links.instagram || project.links.external}
-                    target={(project.links.instagram || !project.links.external?.startsWith('#')) ? "_blank" : undefined}
-                    rel={(project.links.instagram || !project.links.external?.startsWith('#')) ? "noopener noreferrer" : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex flex-col items-center gap-3 px-6 py-5 border border-white/20 bg-black/85 backdrop-blur-sm transition-colors duration-300 hover:border-amber-400 focus:outline-none focus:border-amber-400 group"
                     aria-label={project.links.externalLabel || (isNl ? 'Bekijk project' : 'View project')}
                   >
