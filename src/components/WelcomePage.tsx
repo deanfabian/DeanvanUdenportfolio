@@ -9,6 +9,7 @@ import { Nav } from './Nav';
 import { SoundToggle } from './SoundToggle';
 import { CONFIG } from '../config';
 import { audioEngine } from '../utils/audioEngine';
+import { useLanguage } from '../context/LanguageContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
 
@@ -37,6 +38,7 @@ export const WelcomePage: React.FC = () => {
 
   const prefersReducedMotion = useReducedMotion();
   const { isMobile } = useWindowDimensions();
+  const { t } = useLanguage();
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -268,38 +270,38 @@ export const WelcomePage: React.FC = () => {
 
         {/* 5. Typography & Story Overlay Layers */}
 
-        {/* Stage 1: "Dean" + Quiet Scroll Cue */}
+        {/* Stage 1: "Dean van Uden" + Quiet Scroll Cue */}
         <div
           ref={introTextRef}
-          className="absolute inset-0 flex flex-col items-center justify-between pt-24 pb-14 z-30 pointer-events-none select-none text-center px-4"
+          className="absolute inset-0 flex flex-col items-center justify-between pt-24 pb-14 z-30 pointer-events-none text-center px-4"
         >
           {/* Top empty balance */}
           <div className="h-4" />
 
-          {/* Central understated name */}
-          <div>
-            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-[#f8fafc] font-light tracking-[0.28em] pl-[0.28em] drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]">
-              Dean
+          {/* Central understated name - tightened spacing, refined Fraunces serif */}
+          <div className="pointer-events-auto">
+            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#f8fafc] font-light tracking-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] select-text">
+              {t.welcome.name}
             </h1>
           </div>
 
           {/* Bottom gentle scroll cue */}
-          <div className="flex flex-col items-center gap-2.5">
-            <span className="text-[10px] md:text-xs font-sans tracking-[0.35em] uppercase text-slate-300/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-              scroll
+          <div className="flex flex-col items-center gap-2.5 pointer-events-auto select-text">
+            <span className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase text-slate-300/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+              {t.welcome.scrollCue}
             </span>
             <div className="w-px h-7 bg-gradient-to-b from-slate-200/60 to-transparent anim-pulse-down" />
           </div>
         </div>
 
-        {/* Stage 2 Mid-zoom Whisper: "This one’s mine." */}
+        {/* Stage 2 Mid-zoom Whisper: "This one’s mine." (positioned fairly to the bottom of the screen) */}
         <div
           ref={whisperRef}
-          className="absolute inset-0 flex items-center justify-center z-35 pointer-events-none select-none opacity-0 px-6 text-center"
+          className="absolute inset-0 flex items-end justify-center pb-20 sm:pb-24 md:pb-28 z-35 pointer-events-none opacity-0 px-6 text-center"
         >
-          <div className="py-2.5 px-6 rounded-full bg-slate-950/75 backdrop-blur-sm border border-amber-500/15 shadow-[0_8px_32px_rgba(0,0,0,0.85)]">
-            <p className="font-serif italic text-lg md:text-2xl text-amber-100/95 font-light tracking-wide">
-              “This one’s mine.”
+          <div className="py-2.5 px-6 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.85)] pointer-events-auto select-text">
+            <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-amber-100 font-light tracking-wide">
+              {t.welcome.whisper}
             </p>
           </div>
         </div>
@@ -307,11 +309,11 @@ export const WelcomePage: React.FC = () => {
         {/* Stage 4 Final Invitation: "Come in." */}
         <div
           ref={comeInRef}
-          className="absolute bottom-12 md:bottom-14 left-1/2 -translate-x-1/2 z-35 pointer-events-none select-none opacity-0 flex flex-col items-center gap-2 text-center"
+          className="absolute bottom-12 md:bottom-14 left-1/2 -translate-x-1/2 z-35 pointer-events-none opacity-0 flex flex-col items-center gap-2 text-center"
         >
-          <div className="py-2 px-5 rounded-full bg-slate-950/75 backdrop-blur-sm border border-amber-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
-            <p className="font-serif italic text-lg md:text-xl text-amber-100 font-normal tracking-widest">
-              Come in.
+          <div className="py-2 px-5 rounded-full bg-slate-950/75 backdrop-blur-sm border border-amber-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.8)] pointer-events-auto select-text">
+            <p className="font-serif italic text-lg md:text-xl text-amber-100 font-normal tracking-wider">
+              {t.welcome.comeIn}
             </p>
           </div>
           <ChevronDown className="w-5 h-5 text-amber-200/90 animate-bounce drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" />

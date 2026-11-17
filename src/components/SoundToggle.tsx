@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { audioEngine } from '../utils/audioEngine';
+import { useLanguage } from '../context/LanguageContext';
 
 export const SoundToggle: React.FC = () => {
+  const { t } = useLanguage();
   const [audioState, setAudioState] = useState(() => ({
     isPlaying: audioEngine.getIsPlaying(),
     isInside: audioEngine.getIsInside(),
@@ -28,7 +30,7 @@ export const SoundToggle: React.FC = () => {
       aria-label={
         isPlaying
           ? isInside
-            ? 'Outside sound faded inside'
+            ? t.sound.quietInside
             : 'Mute ambient soundscape'
           : 'Play ambient rain and city soundscape'
       }
@@ -46,7 +48,7 @@ export const SoundToggle: React.FC = () => {
               isInside ? 'text-slate-400' : 'text-slate-200'
             }`}
           >
-            {isInside ? 'Quiet Inside' : 'Rain · City'}
+            {isInside ? t.sound.quietInside : t.sound.rainCity}
           </span>
           <span
             className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
@@ -58,7 +60,7 @@ export const SoundToggle: React.FC = () => {
         <>
           <VolumeX className="w-4 h-4 text-slate-500 transition-transform group-hover:scale-110" />
           <span className="text-[11px] tracking-widest uppercase font-mono pr-1 text-slate-500 group-hover:text-slate-400">
-            Sound Off
+            {t.sound.soundOff}
           </span>
         </>
       )}
