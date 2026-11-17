@@ -11,7 +11,7 @@ export interface ProjectStill {
 export interface Project {
   id: string;
   slug: string;
-  category: 'film' | 'social';
+  category: 'film' | 'social' | 'design';
   title: string;
   displayTitle: string;
   workingTitle?: string;
@@ -276,11 +276,25 @@ export const PROJECTS: Record<string, Project> = {
       externalLabel: 'The Throwers Lab',
     },
     card: {
-      stillImage: assetUrl('/assets/projects/throwers-lab/hero.jpg'),
+      stillImage: assetUrl('/assets/projects/throwers-lab/logo-dark.png'),
       previewVideo: assetUrl('/assets/projects/throwers-lab/preview.mp4'),
       previewVideoWebm: assetUrl('/assets/projects/throwers-lab/preview.webm'),
     },
     stills: [
+      {
+        id: 'logo-dark',
+        image: assetUrl('/assets/projects/throwers-lab/logo-dark.png'),
+        characterDetail: 'The Throwers Lab — Monogram & Wordmark (Dark). Dynamic angles mirroring the arm slot and pitching mechanics.',
+        characterDetailNl: 'The Throwers Lab — Monogram & woordmerk (donker). Dynamische hoeken die de armactie en biomechanica van een werper weerspiegelen.',
+        alt: 'The Throwers Lab logo on black background',
+      },
+      {
+        id: 'logo-light',
+        image: assetUrl('/assets/projects/throwers-lab/logo-light.png'),
+        characterDetail: 'The Throwers Lab — Monogram & Wordmark (Light). High-contrast visual identity for print, jerseys and documentation.',
+        characterDetailNl: 'The Throwers Lab — Monogram & woordmerk (licht). Contrastrijke visuele identiteit voor print, teamkleding en documentatie.',
+        alt: 'The Throwers Lab logo on white background',
+      },
       {
         id: 'mechanics',
         image: assetUrl('/assets/projects/throwers-lab/still-1.jpg'),
@@ -304,8 +318,63 @@ export const PROJECTS: Record<string, Project> = {
       },
     ],
   },
+
+  'logo-design': {
+    id: 'logo-design',
+    slug: 'logo-design',
+    category: 'design',
+    title: 'Logo Design — The Throwers Lab & Visual Identity',
+    displayTitle: 'Logo Design',
+    year: '2024–heden',
+    type: 'Logo & visual identity · The Throwers Lab',
+    typeNl: 'Logo & visuele identiteit · The Throwers Lab',
+    production: 'The Throwers Lab & Visual Identity Archive',
+    myRole: 'Graphic Designer',
+    myRoleNl: 'Grafisch ontwerper',
+    cardRole: 'Graphic design',
+    cardRoleNl: 'Graphic design',
+    tagline: 'Bold geometry and kinetic momentum built for athlete development.',
+    taglineNl: 'Krachtige geometrie en voorwaartse dynamiek ontworpen voor pitcher-ontwikkeling.',
+    logline: 'Visuele identiteit en logo-ontwerp voor The Throwers Lab: een dynamisch monogram dat de armactie van een werper vangt in een strak, atletisch beeldmerk.',
+    loglineNl: 'Visuele identiteit en logo-ontwerp voor The Throwers Lab: een dynamisch monogram dat de armactie van een werper vangt in een strak, atletisch beeldmerk.',
+    outline: 'Voor The Throwers Lab ontwierp ik de visuele identiteit vanuit de fysieke realiteit van de sport: kinetische energie, explosiviteit en precisie. Het monogram combineert de letters T en L in een voorwaartse hellingshoek die direct refereert aan de armslot en release point van een pitcher. De typografie is robuust en modern, geoptimaliseerd voor zowel digitale analyse-video’s als kleding en fysiek trainingsmateriaal.',
+    outlineNl: 'Voor The Throwers Lab ontwierp ik de visuele identiteit vanuit de fysieke realiteit van de sport: kinetische energie, explosiviteit en precisie. Het monogram combineert de letters T en L in een voorwaartse hellingshoek die direct refereert aan de armslot en release point van een pitcher. De typografie is robuust en modern, geoptimaliseerd voor zowel digitale analyse-video’s als kleding en fysiek trainingsmateriaal.',
+    writtenBy: 'Logo Design · Typografie · Monogramontwikkeling · Vormgeving',
+    writtenByLabel: 'Disciplines',
+    writtenByLabelNl: 'Werkzaamheden',
+    crew: 'Grafisch Ontwerp — Dean van Uden · Identiteit — The Throwers Lab',
+    cast: 'Monogram (TTL) & Typografisch Woordmerk',
+    locations: 'Oosterhout & Breda',
+    links: {
+      external: '#throwers-lab',
+      externalLabel: 'Bekijk The Throwers Lab project',
+    },
+    card: {
+      stillImage: assetUrl('/assets/projects/logo-design/logo-dark.png'),
+      previewVideo: assetUrl('/assets/projects/throwers-lab/preview.mp4'),
+      previewVideoWebm: assetUrl('/assets/projects/throwers-lab/preview.webm'),
+    },
+    stills: [
+      {
+        id: 'ttl-dark',
+        image: assetUrl('/assets/projects/logo-design/logo-dark.png'),
+        characterDetail: 'The Throwers Lab — Donkere lockup. Wit monogram op zwart met voorwaartse dynamiek.',
+        characterDetailNl: 'The Throwers Lab — Donkere lockup. Wit monogram op zwart met voorwaartse dynamiek.',
+        alt: 'The Throwers Lab logo dark version',
+      },
+      {
+        id: 'ttl-light',
+        image: assetUrl('/assets/projects/logo-design/logo-light.png'),
+        characterDetail: 'The Throwers Lab — Lichte lockup. Zwart monogram op wit voor print, kleding en briefpapier.',
+        characterDetailNl: 'The Throwers Lab — Lichte lockup. Zwart monogram op wit voor print, kleding en briefpapier.',
+        alt: 'The Throwers Lab logo light version',
+      },
+    ],
+  },
 };
 
 // Aliases for convenience
 PROJECTS['the-throwers-lab'] = PROJECTS['throwers-lab'];
 PROJECTS.throwersLab = PROJECTS['throwers-lab'];
+PROJECTS['graphic-design'] = PROJECTS['logo-design'];
+PROJECTS['logoDesign'] = PROJECTS['logo-design'];

@@ -128,13 +128,14 @@ async function test() {
   }));
   console.log('Portfolio cards:', cardTitles);
 
-  if (cardTitles.length !== 4) {
-    throw new Error(`Expected 4 cards, got ${cardTitles.length}`);
+  if (cardTitles.length !== 5) {
+    throw new Error(`Expected 5 cards, got ${cardTitles.length}`);
   }
   if (!cardTitles[0].titleWithArrow.includes('Mustang →')) throw new Error('Card 1 should be Mustang →');
   if (!cardTitles[1].titleWithArrow.includes('CRACKED →')) throw new Error('Card 2 should be CRACKED →');
   if (!cardTitles[2].titleWithArrow.includes('Brabant Twins →')) throw new Error('Card 3 should be Brabant Twins →');
   if (!cardTitles[3].titleWithArrow.includes('The Throwers Lab →')) throw new Error('Card 4 should be The Throwers Lab →');
+  if (!cardTitles[4].titleWithArrow.includes('Logo Design →')) throw new Error('Card 5 should be Logo Design →');
 
   // Verify "Bekijk project" is removed everywhere
   const hasBekijkProject = await page.evaluate(() => document.body.innerText.includes('Bekijk project'));

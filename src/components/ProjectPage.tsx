@@ -190,44 +190,46 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               />
             )
           ) : (
-            /* Interactive Visual Showcase for non-embed projects (e.g. Brabant Twins Instagram) */
-            <a
-              href={project.links.instagram || project.links.external || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-full h-full block focus:outline-none focus:border-amber-400"
-              aria-label={`Open ${project.displayTitle} on Instagram`}
-            >
+            /* Interactive Visual Showcase for non-embed projects (e.g. Brabant Twins Instagram, The Throwers Lab, Design Showcase) */
+            <div className="relative w-full h-full block">
               <img
                 src={project.card.stillImage}
                 alt={`${project.displayTitle} showcase`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
 
-              {/* Project Card Overlay */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="flex flex-col items-center gap-3 px-6 py-5 border border-white/20 bg-black/85 backdrop-blur-sm transition-colors duration-300 group-hover:border-amber-400">
-                  <div className="w-12 h-12 border border-white/20 flex items-center justify-center text-slate-100 group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
-                    {project.links.instagram ? (
-                      <Instagram className="w-6 h-6" />
-                    ) : (
-                      <ExternalLink className="w-6 h-6" />
-                    )}
-                  </div>
-                  <div className="space-y-1">
-                    <span className="text-xs sm:text-sm font-mono tracking-wider text-slate-100 group-hover:text-amber-200 transition-colors block font-medium">
-                      {project.links.externalLabel || (isNl ? 'Bekijk project' : 'View project')}
-                    </span>
-                    {project.links.instagram && (
-                      <span className="text-[11px] font-mono tracking-wider text-slate-400 block">
-                        instagram.com/brabanttwins ↗
+              {/* Project Card Action Overlay (if external link or instagram available) */}
+              {(project.links.instagram || (project.links.external && project.links.external !== '#')) && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                  <a
+                    href={project.links.instagram || project.links.external}
+                    target={(project.links.instagram || !project.links.external?.startsWith('#')) ? "_blank" : undefined}
+                    rel={(project.links.instagram || !project.links.external?.startsWith('#')) ? "noopener noreferrer" : undefined}
+                    className="flex flex-col items-center gap-3 px-6 py-5 border border-white/20 bg-black/85 backdrop-blur-sm transition-colors duration-300 hover:border-amber-400 focus:outline-none focus:border-amber-400 group"
+                    aria-label={project.links.externalLabel || (isNl ? 'Bekijk project' : 'View project')}
+                  >
+                    <div className="w-12 h-12 border border-white/20 flex items-center justify-center text-slate-100 group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
+                      {project.links.instagram ? (
+                        <Instagram className="w-6 h-6" />
+                      ) : (
+                        <ExternalLink className="w-6 h-6" />
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-xs sm:text-sm font-mono tracking-wider text-slate-100 group-hover:text-amber-200 transition-colors block font-medium">
+                        {project.links.externalLabel || (isNl ? 'Bekijk project' : 'View project')}
                       </span>
-                    )}
-                  </div>
+                      {project.links.instagram && (
+                        <span className="text-[11px] font-mono tracking-wider text-slate-400 block">
+                          {project.links.instagram.replace(/^https?:\/\/(www\.)?/, '')} ↗
+                        </span>
+                      )}
+                    </div>
+                  </a>
                 </div>
-              </div>
-            </a>
+              )}
+            </div>
           )}
         </div>
 
@@ -257,6 +259,17 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
               </a>
             </>
+          )}
+          {project.links.external && project.links.external !== '#' && !project.links.instagram && (
+            <a
+              href={project.links.external}
+              target={project.links.external.startsWith('#') ? undefined : "_blank"}
+              rel={project.links.external.startsWith('#') ? undefined : "noopener noreferrer"}
+              className="group flex items-center gap-1.5 transition-colors duration-200 hover:text-amber-300"
+            >
+              <span>{project.links.externalLabel || (isNl ? 'Bekijk project' : 'View project')}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
+            </a>
           )}
           {project.links.instagram && (
             <>

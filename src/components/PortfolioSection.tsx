@@ -88,15 +88,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
 export const PortfolioSection: React.FC = () => {
   const { t } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState<'all' | 'film' | 'social'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'film' | 'social' | 'design'>('all');
 
-  // Exact 4 cards in required order
+  // Projects in required order: films, social media, graphic design
   const allProjects = [
     PROJECTS.mustang,
     PROJECTS.cracked,
     PROJECTS.twins,
     PROJECTS['throwers-lab'],
-  ];
+    PROJECTS['logo-design'],
+  ].filter(Boolean);
 
   const filteredProjects = allProjects.filter((project) => {
     if (activeCategory === 'all') return true;
@@ -107,6 +108,7 @@ export const PortfolioSection: React.FC = () => {
     { id: 'all', label: t.portfolio.filterAll },
     { id: 'film', label: t.portfolio.filterFilms },
     { id: 'social', label: t.portfolio.filterSocial },
+    { id: 'design', label: t.portfolio.filterDesign },
   ] as const;
 
   return (
