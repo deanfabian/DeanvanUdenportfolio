@@ -56,7 +56,7 @@ export const Nav: React.FC<NavProps> = ({ navRef }) => {
       aria-label="Main Navigation"
       className="fixed top-0 left-0 right-0 z-50 pointer-events-auto bg-[#070b14]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300 select-text"
     >
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-4">
+      <div className="w-full max-w-6xl mx-auto px-3 sm:px-8 py-2.5 sm:py-4 flex items-center justify-between gap-1.5 sm:gap-4">
         {/* Brand Signature */}
         <a
           href="#"
@@ -68,14 +68,14 @@ export const Nav: React.FC<NavProps> = ({ navRef }) => {
           className="group flex items-center focus:outline-none flex-shrink-0"
           aria-label="Dean van Uden - Back to top"
         >
-          <span className="font-serif text-base sm:text-lg tracking-tight font-light text-slate-100 group-hover:text-amber-200 transition-colors whitespace-nowrap">
+          <span className="font-serif text-[13px] sm:text-base md:text-lg tracking-tight font-light text-slate-100 group-hover:text-amber-200 transition-colors whitespace-nowrap">
             Dean van Uden
           </span>
         </a>
 
         {/* Navigation Tabs */}
-        <nav aria-label="Navigation Tabs" className="flex items-center gap-4 sm:gap-8 flex-shrink-0">
-          <ul className="flex items-center gap-4 sm:gap-7 text-xs font-mono tracking-wider uppercase">
+        <nav aria-label="Navigation Tabs" className="flex items-center gap-2 sm:gap-6 md:gap-8 flex-shrink-0">
+          <ul className="flex items-center gap-2.5 sm:gap-6 md:gap-7 text-[10px] sm:text-xs font-mono tracking-normal sm:tracking-wider uppercase">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -97,14 +97,14 @@ export const Nav: React.FC<NavProps> = ({ navRef }) => {
           </ul>
 
           {/* Hairline Divider */}
-          <span className="w-px h-3.5 sm:h-4 bg-white/15" aria-hidden="true" />
+          <span className="w-px h-3 sm:h-4 bg-white/15" aria-hidden="true" />
 
           {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
             type="button"
             aria-label={`Switch language to ${language === 'nl' ? 'English' : 'Nederlands'}`}
-            className="px-2 py-0.5 sm:px-2.5 sm:py-1 border border-white/15 hover:border-amber-400/60 text-[9px] sm:text-[10px] font-mono tracking-widest text-slate-300 transition-colors focus:outline-none focus:border-amber-400 whitespace-nowrap flex-shrink-0"
+            className="px-1.5 py-0.5 sm:px-2.5 sm:py-1 border border-white/15 hover:border-amber-400/60 text-[9px] sm:text-[10px] font-mono tracking-wider text-slate-300 transition-colors focus:outline-none focus:border-amber-400 whitespace-nowrap flex-shrink-0"
           >
             <span className={language === 'nl' ? 'text-amber-300 font-semibold' : 'text-slate-500'}>
               NL
