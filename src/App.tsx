@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Nav } from './components/Nav';
 import { WelcomePage } from './components/WelcomePage';
 import { PortfolioSection } from './components/PortfolioSection';
 import { StorySection } from './components/StorySection';
@@ -56,19 +57,22 @@ const MainContent: React.FC = () => {
           <ProjectPage project={activeProject} onBackToStory={handleBackToPortfolio} />
         </main>
       ) : (
-        <main>
-          {/* Welcome Page Experience: "The Window" */}
-          <WelcomePage />
+        <>
+          <Nav />
+          <main>
+            {/* Welcome Page Experience: "The Window" */}
+            <WelcomePage />
 
-          {/* Tab 1: Portfolio (Film & Fictie + Social Media & Content) */}
-          <PortfolioSection />
+            {/* Tab 1: Portfolio (Film & Fictie + Social Media & Content) */}
+            <PortfolioSection />
 
-          {/* Tab 2: Story (Dean's vision and background) */}
-          <StorySection />
+            {/* Tab 2: Story (Dean's vision and background) */}
+            <StorySection />
 
-          {/* Tab 3: Contact (Collaboration form & deanfabianvanuden@gmail.com) */}
-          <ContactSection />
-        </main>
+            {/* Tab 3: Contact (Collaboration form & deanfabianvanuden@gmail.com) */}
+            <ContactSection />
+          </main>
+        </>
       )}
     </div>
   );

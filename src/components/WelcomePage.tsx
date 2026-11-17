@@ -1,11 +1,9 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown } from 'lucide-react';
 import { PhotographicScene } from './PhotographicScene';
 import { RainLayer } from './RainLayer';
 import { GlassTransition } from './GlassTransition';
-import { Nav } from './Nav';
 import { SoundToggle } from './SoundToggle';
 import { CONFIG } from '../config';
 import { audioEngine } from '../utils/audioEngine';
@@ -31,7 +29,6 @@ export const WelcomePage: React.FC = () => {
   const reflectionRef = useRef<HTMLDivElement>(null);
 
   // UI & Typography Refs
-  const navRef = useRef<HTMLElement>(null);
   const introTextRef = useRef<HTMLDivElement>(null);
   const whisperRef = useRef<HTMLDivElement>(null);
   const comeInRef = useRef<HTMLDivElement>(null);
@@ -75,7 +72,6 @@ export const WelcomePage: React.FC = () => {
           .to(windowCloseupRef.current, { opacity: 1, duration: 15 }, 38)
           .to(windowCloseupRef.current, { opacity: 0, duration: 15 }, 58)
           .to(roomInteriorRef.current, { opacity: 1, duration: 15 }, 58)
-          .to(navRef.current, { opacity: 1, pointerEvents: 'auto', duration: 12 }, 72)
           .to(comeInRef.current, { opacity: 1, duration: 12 }, 78);
         return;
       }
@@ -209,14 +205,6 @@ export const WelcomePage: React.FC = () => {
           ease: 'power1.out',
         }, 72)
 
-        // Minimal corner navigation fades in
-        .to(navRef.current, {
-          opacity: 1,
-          pointerEvents: 'auto',
-          duration: 8,
-          ease: 'power1.out',
-        }, 70)
-
         // Final invitation prompt: "Come in." + animated chevron
         .fromTo(comeInRef.current, {
           opacity: 0,
@@ -265,10 +253,7 @@ export const WelcomePage: React.FC = () => {
           reflectionRef={reflectionRef}
         />
 
-        {/* 4. Minimal Corner Navigation */}
-        <Nav navRef={navRef} />
-
-        {/* 5. Typography & Story Overlay Layers */}
+        {/* 4. Typography & Story Overlay Layers */}
 
         {/* Stage 1: "Dean van Uden" + Quiet Scroll Cue */}
         <div
@@ -294,29 +279,30 @@ export const WelcomePage: React.FC = () => {
           </div>
         </div>
 
-        {/* Stage 2 Mid-zoom Whisper: "This one’s mine." (positioned fairly to the bottom of the screen) */}
+        {/* Stage 2 Mid-zoom Whisper: "This one’s mine." (Cinematic Subtitle lower-third) */}
         <div
           ref={whisperRef}
           className="absolute inset-0 flex items-end justify-center pb-20 sm:pb-24 md:pb-28 z-35 pointer-events-none opacity-0 px-6 text-center"
         >
-          <div className="py-2.5 px-6 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.85)] pointer-events-auto select-text">
-            <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-amber-100 font-light tracking-wide">
+          <div className="border-l-2 border-amber-400 pl-4 pr-5 py-2 bg-black/80 backdrop-blur-sm pointer-events-auto select-text shadow-2xl">
+            <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-amber-100 font-light tracking-wide">
               {t.welcome.whisper}
             </p>
           </div>
         </div>
 
-        {/* Stage 4 Final Invitation: "Come in." */}
+        {/* Stage 4 Final Invitation: "Come in." (Crisp Editorial Prompt) */}
         <div
           ref={comeInRef}
-          className="absolute bottom-12 md:bottom-14 left-1/2 -translate-x-1/2 z-35 pointer-events-none opacity-0 flex flex-col items-center gap-2 text-center"
+          className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-35 pointer-events-none opacity-0 flex flex-col items-center gap-2 text-center"
         >
-          <div className="py-2 px-5 rounded-full bg-slate-950/75 backdrop-blur-sm border border-amber-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.8)] pointer-events-auto select-text">
-            <p className="font-serif italic text-lg md:text-xl text-amber-100 font-normal tracking-wider">
+          <div className="px-5 py-2 border border-white/20 bg-[#070b14]/90 backdrop-blur-sm pointer-events-auto select-text flex items-center gap-3">
+            <span className="w-1.5 h-1.5 bg-amber-400" />
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-slate-200 font-medium">
               {t.welcome.comeIn}
             </p>
+            <span className="text-amber-400 font-mono text-xs" aria-hidden="true">↓</span>
           </div>
-          <ChevronDown className="w-5 h-5 text-amber-200/90 animate-bounce drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" />
         </div>
 
         {/* 6. Ambient Soundscape Toggle */}

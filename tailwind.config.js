@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         serif: ['Fraunces', 'Georgia', 'serif'],
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
     },
   },

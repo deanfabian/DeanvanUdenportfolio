@@ -72,12 +72,12 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
       className="min-h-screen w-full bg-[#070b14] text-slate-100 pb-28 selection:bg-amber-500/20 selection:text-amber-200 select-text"
     >
       {/* Fixed subtle back shortcut at top left */}
-      <header className="fixed top-5 left-4 sm:top-6 sm:left-6 z-50">
+      <header className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50">
         <button
           onClick={onBackToStory}
           type="button"
           aria-label={t.nav.backToPortfolio}
-          className="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/85 backdrop-blur-md border border-slate-700/80 text-xs font-mono tracking-widest uppercase text-slate-300 hover:text-amber-200 hover:border-amber-500/50 transition-colors duration-300 shadow-xl focus:outline-none focus:ring-1 focus:ring-amber-400"
+          className="group flex items-center gap-2 px-3.5 py-1.5 border border-white/20 bg-[#070b14]/90 backdrop-blur-sm text-xs font-mono tracking-widest uppercase text-slate-300 hover:text-amber-200 hover:border-amber-400 transition-colors duration-200 focus:outline-none focus:border-amber-400"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>{t.nav.backToPortfolio}</span>
@@ -149,14 +149,14 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
       {/* 3. MEDIA EMBED / SHOWCASE (16:9 RESPONSIVE)                    */}
       {/* ============================================================== */}
       <section aria-label="Media Showcase" className="w-full max-w-4xl mx-auto px-6 py-8">
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-700/90 bg-slate-950 shadow-[0_24px_60px_rgba(0,0,0,0.9)]">
+        <div className="relative w-full aspect-video overflow-hidden border border-white/15 bg-black">
           {project.embedUrl ? (
             !isPlayingVideo ? (
               /* Click-to-Play Facade: zero external request until user clicks */
               <button
                 onClick={() => setIsPlayingVideo(true)}
                 type="button"
-                className="group relative w-full h-full block text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400"
+                className="group relative w-full h-full block text-left cursor-pointer focus:outline-none focus:border-amber-400"
                 aria-label={`Play ${project.displayTitle} film`}
               >
                 {/* Thumbnail still */}
@@ -167,14 +167,14 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
                 />
 
                 {/* Dark cinematic lighting vignette */}
-                <div className="absolute inset-0 bg-slate-950/45 group-hover:bg-slate-950/30 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-[#070b14]/40 group-hover:bg-[#070b14]/25 transition-colors duration-300" />
 
-                {/* Centered Golden Play Button */}
+                {/* Centered Play Prompt */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-400/80 flex items-center justify-center text-amber-300 shadow-[0_0_30px_rgba(245,158,11,0.25)] transition-colors duration-300 group-hover:bg-amber-500 group-hover:text-slate-950 group-hover:shadow-[0_0_40px_rgba(245,158,11,0.6)]">
-                    <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-current ml-1" />
+                  <div className="w-16 h-16 border border-amber-400 bg-black/80 flex items-center justify-center text-amber-300 transition-colors duration-300 group-hover:bg-amber-400 group-hover:text-black">
+                    <Play className="w-6 h-6 fill-current ml-0.5" />
                   </div>
-                  <span className="text-xs font-mono tracking-widest uppercase text-slate-200 group-hover:text-amber-200 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  <span className="text-xs font-mono tracking-widest uppercase text-slate-200 group-hover:text-amber-200 transition-colors">
                     {isNl ? 'Film afspelen' : 'Play Film'}
                   </span>
                 </div>
@@ -195,24 +195,24 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               href={project.links.instagram || project.links.external || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-full h-full block focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="group relative w-full h-full block focus:outline-none focus:border-amber-400"
               aria-label={`Open ${project.displayTitle} on Instagram`}
             >
               <img
                 src={project.card.stillImage}
                 alt={`${project.displayTitle} showcase`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-slate-950/30 group-hover:via-slate-950/25 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/50 to-transparent" />
 
               {/* Instagram Card Overlay */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-500">
-                <div className="flex flex-col items-center gap-3 px-6 py-5 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-700/80 shadow-[0_12px_40px_rgba(0,0,0,0.9)] transition-all duration-300 group-hover:border-sky-400/80 group-hover:scale-105">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-900 border border-sky-400/80 flex items-center justify-center text-sky-400 shadow-[0_0_25px_rgba(56,189,248,0.35)] transition-colors group-hover:bg-sky-500 group-hover:text-slate-950">
-                    <Instagram className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                <div className="flex flex-col items-center gap-3 px-6 py-5 border border-white/20 bg-black/85 backdrop-blur-sm transition-colors duration-300 group-hover:border-amber-400">
+                  <div className="w-12 h-12 border border-white/20 flex items-center justify-center text-slate-100 group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
+                    <Instagram className="w-6 h-6" />
                   </div>
-                  <div className="space-y-0.5">
-                    <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-slate-100 group-hover:text-sky-200 transition-colors block font-semibold">
+                  <div className="space-y-1">
+                    <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-slate-100 group-hover:text-amber-200 transition-colors block font-semibold">
                       {project.links.externalLabel || (isNl ? 'Bekijk @brabanttwins op Instagram' : 'View @brabanttwins on Instagram')}
                     </span>
                     <span className="text-[11px] font-mono tracking-wider text-slate-400 block">
@@ -232,7 +232,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
               href={project.links.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-1.5 transition-colors duration-300 hover:text-amber-300"
+              className="group flex items-center gap-1.5 transition-colors duration-200 hover:text-amber-300"
             >
               <span>{t.portfolio.watchYouTube}</span>
               <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
@@ -245,7 +245,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
                 href={project.links.imdb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-1.5 transition-colors duration-300 hover:text-amber-300"
+                className="group flex items-center gap-1.5 transition-colors duration-200 hover:text-amber-300"
               >
                 <span>{t.portfolio.viewImdb}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
@@ -259,11 +259,11 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
                 href={project.links.instagram || project.links.external}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-sky-400/60 hover:text-sky-300 transition-all duration-300 text-slate-200"
+                className="group flex items-center gap-2 px-3 py-1.5 border border-white/20 bg-[#0a0f1d] hover:border-amber-400 hover:text-amber-200 transition-colors text-slate-200"
               >
-                <Instagram className="w-4 h-4 text-sky-400 group-hover:text-sky-300 transition-colors" />
+                <Instagram className="w-3.5 h-3.5 text-amber-400" />
                 <span>{project.links.externalLabel || (isNl ? 'Bekijk op Instagram' : 'View on Instagram')}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-sky-300 transition-colors" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-200 transition-colors" />
               </a>
             </>
           )}
@@ -299,16 +299,16 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
         </div>
 
         {/* Featured Still Frame */}
-        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-slate-700/80 bg-slate-950 shadow-2xl mb-5">
+        <div className="relative w-full aspect-[16/9] overflow-hidden border border-white/15 bg-black mb-4">
           <img
             src={project.stills[activeStillIndex]?.image}
             alt={project.stills[activeStillIndex]?.alt}
-            className="w-full h-full object-cover transition-opacity duration-500"
+            className="w-full h-full object-cover transition-opacity duration-300"
           />
 
           {/* SONDER TOUCH: In the corner of the gallery, one small low-emphasis line */}
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 pointer-events-none">
-            <div className="inline-block px-4 py-2 rounded-md bg-slate-950/85 backdrop-blur-md border border-slate-700/60 shadow-lg pointer-events-auto">
+            <div className="inline-block border-l-2 border-amber-400 px-4 py-2 bg-black/85 backdrop-blur-sm pointer-events-auto">
               <p className="text-xs sm:text-sm font-serif italic text-amber-100 font-light tracking-wide">
                 {stillCaption}
               </p>
@@ -319,17 +319,17 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
         {/* Horizontal Thumbnail Strip */}
         <div
           ref={galleryScrollRef}
-          className="flex items-center gap-3.5 overflow-x-auto pb-2 scrollbar-none"
+          className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none"
         >
           {project.stills.map((still, idx) => (
             <button
               key={still.id}
               onClick={() => handleStillSelect(idx)}
               type="button"
-              className={`relative flex-shrink-0 w-32 sm:w-44 aspect-video rounded-lg overflow-hidden border transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-amber-400 ${
+              className={`relative flex-shrink-0 w-32 sm:w-44 aspect-video overflow-hidden border transition-colors duration-200 focus:outline-none focus:border-amber-400 ${
                 activeStillIndex === idx
-                  ? 'border-amber-400 ring-1 ring-amber-400/50'
-                  : 'border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-600'
+                  ? 'border-amber-400'
+                  : 'border-white/15 opacity-60 hover:opacity-100 hover:border-white/40'
               }`}
               aria-label={`View still ${idx + 1}: ${still.alt}`}
             >

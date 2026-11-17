@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, MapPin, GraduationCap } from 'lucide-react';
+import { Mail, Copy, Check, Send } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const ContactSection: React.FC = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,7 +35,6 @@ export const ContactSection: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      // Reset form after short delay
       setTimeout(() => {
         setFormData({ name: '', email: '', subject: 'film', message: '' });
       }, 500);
@@ -46,109 +45,116 @@ export const ContactSection: React.FC = () => {
     <section
       id="contact"
       aria-label="Contact Dean van Uden"
-      className="relative min-h-screen w-full bg-[#070b14] flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 py-28 border-t border-slate-900"
+      className="relative min-h-screen w-full bg-[#070b14] px-4 sm:px-8 md:px-12 py-24 sm:py-32 border-t border-white/10"
     >
-      {/* Subtle separator thread */}
-      <div className="w-12 h-px bg-slate-700/80 mb-12" aria-hidden="true" />
-
-      <div className="w-full max-w-5xl mx-auto space-y-16 select-text">
-        {/* Header */}
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="text-xs tracking-[0.3em] uppercase font-mono text-amber-400 font-medium">
-            {t.contact.badge}
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-slate-100 font-light tracking-tight">
-            {t.contact.title}
-          </h2>
-          <p className="text-sm md:text-base text-slate-300 font-light leading-relaxed">
-            {t.contact.subtitle}
-          </p>
+      <div className="w-full max-w-7xl mx-auto select-text space-y-16">
+        {/* Asymmetrical Editorial Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end border-b border-white/10 pb-10">
+          <div className="lg:col-span-7 space-y-3">
+            <span className="text-xs font-mono tracking-[0.25em] uppercase text-amber-400 block font-medium">
+              {t.contact.badge}
+            </span>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-slate-100 font-light tracking-tight leading-tight">
+              {t.contact.title}
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+              {t.contact.subtitle}
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Direct Contact Info & Quick Actions */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Direct Email Card */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-slate-950/70 border border-slate-800 shadow-xl space-y-4">
-              <span className="text-xs font-mono tracking-widest uppercase text-slate-400 block">
-                {t.contact.emailLabel}
-              </span>
-              <a
-                href={`mailto:${email}`}
-                className="font-serif text-lg sm:text-xl text-amber-200 hover:text-amber-100 transition-colors block break-all focus:outline-none focus:underline"
-              >
-                {email}
-              </a>
-
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 text-xs font-mono tracking-wider text-slate-200 transition-all focus:outline-none focus:ring-1 focus:ring-amber-400"
-                  aria-label="Copy email address"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-emerald-300">{t.contact.copied}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{t.contact.copyEmail}</span>
-                    </>
-                  )}
-                </button>
-
+        {/* Editorial Contact Sheet */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Left Column: Direct Colophon */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="border-t border-b border-white/15 divide-y divide-white/10">
+              {/* Direct Email Entry */}
+              <div className="py-5 space-y-2">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-slate-500 block">
+                  {t.contact.emailLabel}
+                </span>
                 <a
                   href={`mailto:${email}`}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/40 hover:bg-amber-500/20 text-xs font-mono tracking-wider text-amber-200 transition-all focus:outline-none focus:ring-1 focus:ring-amber-400"
+                  className="font-serif text-xl sm:text-2xl text-amber-200 hover:text-amber-100 transition-colors block break-all focus:outline-none focus:underline"
                 >
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>Open Mail</span>
+                  {email}
                 </a>
-              </div>
-            </div>
 
-            {/* Location & Study Information */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-slate-950/50 border border-slate-800/80 shadow-xl space-y-5">
-              <div className="flex items-start gap-3.5">
-                <MapPin className="w-5 h-5 text-amber-400/80 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs font-mono tracking-widest uppercase text-slate-400 block mb-0.5">
-                    {t.contact.locationLabel}
-                  </span>
-                  <p className="font-serif text-slate-200 text-sm sm:text-base">
-                    {t.contact.locationVal}
-                  </p>
+                <div className="flex items-center gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="flex items-center gap-2 px-3 py-1.5 border border-white/15 hover:border-amber-400/60 bg-[#0a0f1d] text-xs font-mono tracking-wider text-slate-200 transition-colors focus:outline-none focus:border-amber-400"
+                    aria-label="Copy email address"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-emerald-300">{t.contact.copied}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 text-slate-400" />
+                        <span>{t.contact.copyEmail}</span>
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    href={`mailto:${email}`}
+                    className="flex items-center gap-2 px-3 py-1.5 border border-white/15 hover:border-amber-400/60 bg-[#0a0f1d] text-xs font-mono tracking-wider text-amber-200 transition-colors focus:outline-none focus:border-amber-400"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>Open Mail</span>
+                  </a>
                 </div>
               </div>
 
-              <div className="w-full h-px bg-slate-800/60" />
+              {/* Location */}
+              <div className="py-4">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-slate-500 block mb-1">
+                  {t.contact.locationLabel}
+                </span>
+                <p className="font-serif text-slate-200 text-base">
+                  {t.contact.locationVal}
+                </p>
+              </div>
 
-              <div className="flex items-start gap-3.5">
-                <GraduationCap className="w-5 h-5 text-amber-400/80 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs font-mono tracking-widest uppercase text-slate-400 block mb-0.5">
-                    {t.contact.studyLabel}
-                  </span>
-                  <p className="font-serif text-slate-200 text-sm sm:text-base">
-                    {t.contact.studyVal}
-                  </p>
-                </div>
+              {/* Education */}
+              <div className="py-4">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-slate-500 block mb-1">
+                  {t.contact.studyLabel}
+                </span>
+                <p className="font-serif text-slate-200 text-base">
+                  {t.contact.studyVal}
+                </p>
+              </div>
+
+              {/* Scope */}
+              <div className="py-4">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-slate-500 block mb-1">
+                  {language === 'nl' ? 'Diensten & Rollen' : 'Scope & Roles'}
+                </span>
+                <p className="font-serif text-slate-300 text-sm sm:text-base leading-snug">
+                  {language === 'nl'
+                    ? 'Fictiefilm productie · Draaidag-planning · Casting & crew-coördinatie · Sport & club visual content'
+                    : 'Fiction production · Set logistics · Casting & crew coordination · Sports & club visual content'}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Interactive Collaboration Form */}
+          {/* Right Column: Editorial Dispatch Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-2xl">
+            <div className="border border-white/15 bg-[#0a0f1d] p-6 sm:p-10">
               {isSubmitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <div className="w-14 h-14 mx-auto rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                    <Check className="w-7 h-7" />
+                  <div className="w-12 h-12 mx-auto border border-emerald-400 flex items-center justify-center text-emerald-400">
+                    <Check className="w-6 h-6" />
                   </div>
-                  <h3 className="font-serif text-2xl text-slate-100 font-light">
+                  <h3 className="font-serif text-2xl text-slate-100 font-light tracking-tight">
                     {t.contact.form.successTitle}
                   </h3>
                   <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
@@ -157,17 +163,17 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsSubmitted(false)}
-                    className="mt-4 px-5 py-2 rounded-full border border-slate-700 text-xs font-mono uppercase tracking-widest text-slate-300 hover:text-amber-200 hover:border-amber-400/50 transition-colors"
+                    className="mt-4 px-5 py-2 border border-white/20 text-xs font-mono uppercase tracking-widest text-slate-300 hover:text-amber-200 hover:border-amber-400 transition-colors"
                   >
-                    Nog een bericht sturen
+                    {language === 'nl' ? 'Nieuw bericht versturen' : 'Send another inquiry'}
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Name */}
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono tracking-wider uppercase text-slate-300 block">
+                    <div className="space-y-2">
+                      <label className="text-[11px] font-mono tracking-wider uppercase text-slate-400 block">
                         {t.contact.form.name} *
                       </label>
                       <input
@@ -176,13 +182,13 @@ export const ContactSection: React.FC = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder={t.contact.form.namePlaceholder}
-                        className="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
+                        className="w-full px-4 py-3 bg-[#070b14] border border-white/15 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-amber-400 transition-colors"
                       />
                     </div>
 
                     {/* Email */}
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono tracking-wider uppercase text-slate-300 block">
+                    <div className="space-y-2">
+                      <label className="text-[11px] font-mono tracking-wider uppercase text-slate-400 block">
                         {t.contact.form.email} *
                       </label>
                       <input
@@ -191,20 +197,20 @@ export const ContactSection: React.FC = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder={t.contact.form.emailPlaceholder}
-                        className="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
+                        className="w-full px-4 py-3 bg-[#070b14] border border-white/15 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-amber-400 transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Subject / Category */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono tracking-wider uppercase text-slate-300 block">
+                  <div className="space-y-2">
+                    <label className="text-[11px] font-mono tracking-wider uppercase text-slate-400 block">
                       {t.contact.form.subject}
                     </label>
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#070b14] border border-white/15 text-sm text-slate-100 focus:outline-none focus:border-amber-400 transition-colors"
                     >
                       <option value="film">{t.contact.form.typeFilm}</option>
                       <option value="social">{t.contact.form.typeSocial}</option>
@@ -213,17 +219,17 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   {/* Message */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono tracking-wider uppercase text-slate-300 block">
+                  <div className="space-y-2">
+                    <label className="text-[11px] font-mono tracking-wider uppercase text-slate-400 block">
                       {t.contact.form.message} *
                     </label>
                     <textarea
                       required
-                      rows={4}
+                      rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder={t.contact.form.messagePlaceholder}
-                      className="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-[#070b14] border border-white/15 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-amber-400 transition-colors resize-none"
                     />
                   </div>
 
@@ -231,13 +237,13 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-mono text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-[0_4px_20px_rgba(245,158,11,0.3)] disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-400 hover:bg-amber-300 text-[#070b14] font-mono text-xs uppercase tracking-[0.2em] font-semibold transition-colors disabled:opacity-50 focus:outline-none focus:ring-1 focus:ring-amber-400"
                   >
                     {isSubmitting ? (
                       <span>{t.contact.form.sending}</span>
                     ) : (
                       <>
-                        <Send className="w-4 h-4" />
+                        <Send className="w-3.5 h-3.5" />
                         <span>{t.contact.form.send}</span>
                       </>
                     )}
