@@ -65,11 +65,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         />
       )}
 
-      {/* 3. Shadow scrim for legibility */}
+      {/* 3. Shadow scrim for legibility (bottom and top) */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/55 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#070b14]/75 to-transparent pointer-events-none" />
 
       {/* 4. Top Meta */}
-      <div className="absolute top-4 sm:top-5 left-4 sm:left-6 right-4 sm:right-6 flex items-center justify-between text-xs font-mono tracking-wider text-slate-300 pointer-events-none">
+      <div className="absolute top-4 sm:top-5 left-4 sm:left-6 right-4 sm:right-6 flex items-center justify-between text-xs font-mono tracking-wider text-slate-200 drop-shadow-sm pointer-events-none">
         <span>{project.year}</span>
         <span>{roleText}</span>
       </div>
