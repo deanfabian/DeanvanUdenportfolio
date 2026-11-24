@@ -62,7 +62,9 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
   const openingHeadline = displayTagline || displayLogline;
   const hasSeparateLoglineSection = Boolean(displayTagline && displayLogline);
 
-  const currentStill = project.stills[activeStillIndex] || project.stills[0];
+  const currentStill = project.stills && project.stills.length > 0
+    ? (project.stills[activeStillIndex] || project.stills[0])
+    : undefined;
   const stillCaption = isNl && currentStill?.characterDetailNl
     ? currentStill.characterDetailNl
     : currentStill?.characterDetail;
@@ -457,60 +459,66 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ project, onBackToStory
       {/* ============================================================== */}
       {/* 5. HORIZONTAL GALLERY STRIP WITH SONDER DETAILS                */}
       {/* ============================================================== */}
-      <section aria-label="Character Stills Gallery" className="w-full max-w-5xl mx-auto px-6 py-12">
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-slate-400">
-            {t.portfolio.stills}
-          </span>
-          <span className="text-[11px] font-mono tracking-widest text-slate-400">
-            {activeStillIndex + 1} / {project.stills.length}
-          </span>
-        </div>
-
-        {/* Featured Still Frame */}
-        <div className="relative w-full aspect-[16/9] overflow-hidden border border-white/15 bg-black mb-4">
-          <img
-            src={project.stills[activeStillIndex]?.image}
-            alt={project.stills[activeStillIndex]?.alt}
-            className="w-full h-full object-cover transition-opacity duration-300"
-          />
-
-          {/* SONDER TOUCH: In the corner of the gallery, one small low-emphasis line */}
-          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 pointer-events-none">
-            <div className="inline-block border-l-2 border-amber-400 px-4 py-2 bg-black/85 backdrop-blur-sm pointer-events-auto">
-              <p className="text-xs sm:text-sm font-serif italic text-amber-100 font-light tracking-wide">
-                {stillCaption}
-              </p>
-            </div>
+      {project.stills && project.stills.length > 0 && (
+        <section aria-label="Character Stills Gallery" className="w-full max-w-5xl mx-auto px-6 py-12">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-slate-400">
+              {t.portfolio.stills}
+            </span>
+            <span className="text-[11px] font-mono tracking-widest text-slate-400">
+              {activeStillIndex + 1} / {project.stills.length}
+            </span>
           </div>
-        </div>
 
-        {/* Horizontal Thumbnail Strip */}
-        <div
-          ref={galleryScrollRef}
-          className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none"
-        >
-          {project.stills.map((still, idx) => (
-            <button
-              key={still.id}
-              onClick={() => handleStillSelect(idx)}
-              type="button"
-              className={`relative flex-shrink-0 w-32 sm:w-44 aspect-video overflow-hidden border transition-colors duration-200 focus:outline-none focus:border-amber-400 ${
-                activeStillIndex === idx
-                  ? 'border-amber-400'
-                  : 'border-white/15 opacity-60 hover:opacity-100 hover:border-white/40'
-              }`}
-              aria-label={`View still ${idx + 1}: ${still.alt}`}
+          {/* Featured Still Frame */}
+          <div className="relative w-full aspect-[16/9] overflow-hidden border border-white/15 bg-black mb-4">
+            <img
+              src={project.stills[activeStillIndex]?.image}
+              alt={project.stills[activeStillIndex]?.alt}
+              className="w-full h-full object-cover transition-opacity duration-300"
+            />
+
+            {/* SONDER TOUCH: In the corner of the gallery, one small low-emphasis line */}
+            {stillCaption && (
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 pointer-events-none">
+                <div className="inline-block border-l-2 border-amber-400 px-4 py-2 bg-black/85 backdrop-blur-sm pointer-events-auto">
+                  <p className="text-xs sm:text-sm font-serif italic text-amber-100 font-light tracking-wide">
+                    {stillCaption}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Horizontal Thumbnail Strip */}
+          {project.stills.length > 1 && (
+            <div
+              ref={galleryScrollRef}
+              className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none"
             >
-              <img
-                src={still.image}
-                alt={still.alt}
-                className="w-full h-full object-cover"
-              />
-            </button>
-          ))}
-        </div>
-      </section>
+              {project.stills.map((still, idx) => (
+                <button
+                  key={still.id}
+                  onClick={() => handleStillSelect(idx)}
+                  type="button"
+                  className={`relative flex-shrink-0 w-32 sm:w-44 aspect-video overflow-hidden border transition-colors duration-200 focus:outline-none focus:border-amber-400 ${
+                    activeStillIndex === idx
+                      ? 'border-amber-400'
+                      : 'border-white/15 opacity-60 hover:opacity-100 hover:border-white/40'
+                  }`}
+                  aria-label={`View still ${idx + 1}: ${still.alt}`}
+                >
+                  <img
+                    src={still.image}
+                    alt={still.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
 
       {/* ============================================================== */}
       {/* 6. CREDITS BLOCK (STYLED LIKE FILM END CREDITS)                */}

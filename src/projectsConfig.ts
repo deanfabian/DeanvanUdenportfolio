@@ -99,36 +99,7 @@ export const PROJECTS: Record<string, Project> = {
       previewVideo: assetUrl('/assets/projects/mustang/preview.mp4'),
       previewVideoWebm: assetUrl('/assets/projects/mustang/preview.webm'),
     },
-    stills: [
-      {
-        id: 'erik',
-        image: assetUrl('/assets/projects/mustang/still-1.jpg'),
-        characterDetail: 'Erik Dekker, 50. Always carries a laminated training schedule.',
-        characterDetailNl: 'Erik Dekker, 50. Heeft altijd een gelamineerd trainingsschema bij zich.',
-        alt: 'Erik Dekker with his laminated training schedule',
-      },
-      {
-        id: 'cal',
-        image: assetUrl('/assets/projects/mustang/still-2.jpg'),
-        characterDetail: 'Cal “The Mustang” Dekker. Treats hobby horsing as elite athletics.',
-        characterDetailNl: 'Cal “The Mustang” Dekker. Beleeft hobby horsing met topsport-intensiteit.',
-        alt: 'Cal Dekker in competition gear',
-      },
-      {
-        id: 'gallus',
-        image: assetUrl('/assets/projects/mustang/still-3.jpg'),
-        characterDetail: 'Gallus Maximus. Listens to classical music in his stable.',
-        characterDetailNl: 'Gallus Maximus. Luistert naar klassieke muziek in zijn stal.',
-        alt: 'Gallus Maximus stick horse in stable',
-      },
-      {
-        id: 'julia',
-        image: assetUrl('/assets/projects/mustang/still-4.jpg'),
-        characterDetail: 'Julia Al-Mamoet, 13. The next generation.',
-        characterDetailNl: 'Julia Al-Mamoet, 13. De volgende generatie.',
-        alt: 'Julia Al-Mamoet on the junior obstacle course',
-      },
-    ],
+    stills: [],
   },
 
   cracked: {
@@ -168,29 +139,7 @@ export const PROJECTS: Record<string, Project> = {
       previewVideo: assetUrl('/assets/projects/cracked/preview.mp4'),
       previewVideoWebm: assetUrl('/assets/projects/cracked/preview.webm'),
     },
-    stills: [
-      {
-        id: 'victor',
-        image: assetUrl('/assets/projects/cracked/still-1.jpg'),
-        characterDetail: 'Victor, mid-twenties. Raised in a family of high achievers.',
-        characterDetailNl: 'Victor, midden twintig. Opgegroeid in een familie van prestatiegerichte academici.',
-        alt: 'Victor in the kitchen',
-      },
-      {
-        id: 'elena',
-        image: assetUrl('/assets/projects/cracked/still-2.jpg'),
-        characterDetail: 'Elena, photographer. Raised to see failure as growth.',
-        characterDetailNl: 'Elena, fotograaf. Opgevoed met het idee dat falen de sleutel tot groei is.',
-        alt: 'Elena with camera',
-      },
-      {
-        id: 'presenter',
-        image: assetUrl('/assets/projects/cracked/still-3.jpg'),
-        characterDetail: 'The Presenter. Used to be a chef himself.',
-        characterDetailNl: 'De Presentator. Was ooit zelf chef-kok.',
-        alt: 'The televised cooking show presenter',
-      },
-    ],
+    stills: [],
   },
 
   twins: {
