@@ -39,6 +39,18 @@ export interface Translations {
     outlineLabel: string;
   };
   story: {
+    profile: {
+      tagline: string;
+      studyLabel: string;
+      studyDegree: string;
+      studySchool: string;
+      skillsLabel: string;
+      skills: string[];
+      quoteLabel: string;
+      quote: string;
+      photoAlt: string;
+      contactLink: string;
+    };
     opening: {
       lines: string[];
     };
@@ -122,6 +134,24 @@ export const translations: Record<Language, Translations> = {
       outlineLabel: 'Synopsis',
     },
     story: {
+      profile: {
+        tagline: 'Media Maker · Producent · Creator',
+        studyLabel: 'Studie',
+        studyDegree: 'Creative Business',
+        studySchool: 'Breda University of Applied Sciences (BUas)',
+        skillsLabel: 'Prominente skills',
+        skills: [
+          'Filmproductie & Producing',
+          'Scenario & Storytelling',
+          'Social Media & Content Creatie',
+          'Brand Identity & Design',
+          'Sportfotografie',
+        ],
+        quoteLabel: 'Quote',
+        quote: '“Achter elk raam zit een verhaal. De meeste zijn nog nooit verteld.”',
+        photoAlt: 'Portret van Dean van Uden',
+        contactLink: 'Kom in contact →',
+      },
       opening: {
         lines: [
           'Je liep langs honderd ramen om hier te komen.',
@@ -210,6 +240,24 @@ export const translations: Record<Language, Translations> = {
       outlineLabel: 'Synopsis',
     },
     story: {
+      profile: {
+        tagline: 'Media Maker · Producer · Creator',
+        studyLabel: 'Study',
+        studyDegree: 'Creative Business',
+        studySchool: 'Breda University of Applied Sciences (BUas)',
+        skillsLabel: 'Prominent skills',
+        skills: [
+          'Film Production & Producing',
+          'Screenwriting & Storytelling',
+          'Social Media & Content Creation',
+          'Brand Identity & Design',
+          'Sports Photography',
+        ],
+        quoteLabel: 'Quote',
+        quote: '“Behind every window sits a story. Most have never been told.”',
+        photoAlt: 'Portrait of Dean van Uden',
+        contactLink: 'Get in touch →',
+      },
       opening: {
         lines: [
           'You walked past a hundred windows to get here.',
